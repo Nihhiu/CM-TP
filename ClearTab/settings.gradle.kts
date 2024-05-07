@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Clear Tab"
+rootProject.name = "ClearTab"
 include(":app")
