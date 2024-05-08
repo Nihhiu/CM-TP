@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    // Principal
     <color name="main_light_green">#60A561</color>
     <color name="main_blue">#3B5E68</color>
     <color name="main_dark_green">#053225</color>
     <color name="secondary_green">#204847</color>
     <color name="secondary_light_green">#4E8265</color>
+
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="highlighted_bg">#F0F0F0</color>
 </resources>
