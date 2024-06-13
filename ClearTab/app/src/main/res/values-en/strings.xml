@@ -4,8 +4,4 @@
     <string name="title_history">History</string>
     <string name="title_home">Home</string>
     <string name="title_tasks">Tasks</string>
-    <string name="slider_page1">Create your own Team</string>
-    <string name="slider_page2">Organize and Assign Positions to your Team</string>
-    <string name="slider_page3">Check the History of Performed Tasks</string>
-    <string name="slider_page4">Check User Statistics</string>
 </resources>
