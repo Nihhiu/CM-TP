@@ -54,4 +54,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("androidx.viewpager2:viewpager2:1.1.0")
     implementation("com.google.android.material:material:1.3.0")
+    implementation("com.android.support.constraint:constraint-layout:2.0.4")
 }
