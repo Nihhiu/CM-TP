@@ -1,11 +1,11 @@
 package com.cleartab.cleartab
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-// import android.app.src.main.res.layout.fragment_slider__intro.*
 
 private const val ARG_LAYOUT_ID = "layout_id"
 
@@ -16,6 +16,7 @@ class Slider_1 : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             layoutId = it.getInt(ARG_LAYOUT_ID)
+            Log.d("PageFragment", "Creating fragment with layout ID: $layoutId")
         }
     }
 
@@ -27,11 +28,9 @@ class Slider_1 : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(layoutId: Int) = Slider_1().apply {
-            putInt(ARG_LAYOUT_ID, layoutId)
+            arguments = Bundle().apply {
+                putInt(ARG_LAYOUT_ID, layoutId)
+            }
         }
-    }
-
-    fun setTitle(title: String){
-        slider_text.text = title;
     }
 }
