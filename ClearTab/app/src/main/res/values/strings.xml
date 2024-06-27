@@ -9,4 +9,15 @@
     <string name="slider2">Organize e atribua cargos á sua equipa</string>
     <string name="slider3">Veja o histórico das tarefas realizados</string>
     <string name="slider4">Tenha estatíticas dos utilizadores</string>
+    <string name="login">Insira os seus dados:</string>
+    <string name="login_username">Nome do utilizador:</string>
+    <string name="login_password">Palavra-passe:</string>
+    <string name="login_login">Iniciar sessão</string>
+    <string name="login_nao_conta">Ainda não tem conta?</string>
+    <string name="criar_conta_email">Email:</string>
+    <string name="criar_conta_conta">Criar conta</string>
+    <string name="criar_projeto_nome">Nome do projeto:</string>
+    <string name="criar_conta_descricao">Descrição:</string>
+    <string name="criar_conta_membros">Membros:</string>
+    <string name="criar_projeto_confirmar">Confirmar</string>
 </resources>

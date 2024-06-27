@@ -8,4 +8,15 @@
     <string name="slider2">Organize and assign roles to your team</string>
     <string name="slider3">See the history of tasks performed</string>
     <string name="slider4">Get user statistics</string>
+    <string name="login">Enter your details:</string>
+    <string name="login_username">Username:</string>
+    <string name="login_password">Password:</string>
+    <string name="login_login">Login</string>
+    <string name="login_nao_conta">Still no accont?</string>
+    <string name="criar_conta_email">Email:</string>
+    <string name="criar_conta_conta">Create account</string>
+    <string name="criar_projeto_nome">Project name:</string>
+    <string name="criar_conta_descricao">Description:</string>
+    <string name="criar_conta_membros">Members:</string>
+    <string name="criar_projeto_confirmar">Confirm</string>
 </resources>

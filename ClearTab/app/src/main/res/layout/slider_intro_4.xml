@@ -4,21 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#60A561"
-    tools:context=".Slider_Intro">
+    android:background="#60A561">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="323dp"
-        android:layout_height="344dp"
+        android:id="@+id/imageView3"
+        android:layout_width="45dp"
+        android:layout_height="43dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/slider1"
+        android:layout_marginStart="321dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_forward_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:tint="#FFFFFF" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -26,7 +28,7 @@
         android:layout_height="155dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/logo_branco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,35 +36,30 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="79dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="4dp"
-        android:text="@string/slider1"
+        android:layout_marginTop="20dp"
+        android:text="@string/slider4"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="68dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="321dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="25dp"
-        android:src="@drawable/ic_forward_arrow"
-        app:tint="#FFFFFF"
+        android:id="@+id/imageView4"
+        android:layout_width="367dp"
+        android:layout_height="377dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/slider4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
