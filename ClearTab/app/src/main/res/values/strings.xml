@@ -3,9 +3,10 @@
     <string name="title_history">Histórico</string>
     <string name="title_home">Home</string>
     <string name="title_tasks">Tasks</string>
-    <string name="slider_page1">Crie a sua Equipa</string>
-    <string name="slider_page2">Organize e Atribua Cargos à sua Equipa</string>
-    <string name="slider_page3">Veja o Histórico das Tarefas Realizadas</string>
-    <string name="slider_page4">Tenha Estatísticas dos Utilizadores</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="slider1">Crie a sua equipa</string>
+    <string name="slider2">Organize e atribua cargos á sua equipa</string>
+    <string name="slider3">Veja o histórico das tarefas realizados</string>
+    <string name="slider4">Tenha estatíticas dos utilizadores</string>
 </resources>
