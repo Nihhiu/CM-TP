@@ -19,4 +19,11 @@
     <string name="criar_conta_descricao">Description:</string>
     <string name="criar_conta_membros">Members:</string>
     <string name="criar_projeto_confirmar">Confirm</string>
+    <string name="criar_conta_nome">Name:</string>
+    <string name="projeto_editar">Edit</string>
+    <string name="projeto_baixar">Download</string>
+    <string name="perfil_cargo">Charge:</string>
+    <string name="atualizar_perfil_confirmar">Confirm</string>
+    <string name="atualizar_perfil_eleminar">Eliminate</string>
+    <string name="perfil_pessoal_sair">Exit</string>
 </resources>

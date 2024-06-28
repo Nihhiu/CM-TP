@@ -20,4 +20,11 @@
     <string name="criar_conta_descricao">Descrição:</string>
     <string name="criar_conta_membros">Membros:</string>
     <string name="criar_projeto_confirmar">Confirmar</string>
+    <string name="criar_conta_nome">Nome:</string>
+    <string name="projeto_editar">Editar</string>
+    <string name="projeto_baixar">Baixar</string>
+    <string name="perfil_cargo">Cargo:</string>
+    <string name="atualizar_perfil_confirmar">Confirmar</string>
+    <string name="atualizar_perfil_eleminar">Eliminar</string>
+    <string name="perfil_pessoal_sair">Sair</string>
 </resources>

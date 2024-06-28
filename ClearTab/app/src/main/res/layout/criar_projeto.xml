@@ -71,12 +71,12 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="58dp"
         android:text="@string/criar_projeto_confirmar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
     <TextView
         android:id="@+id/textView8"
@@ -93,19 +93,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
 
-    <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="353dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="21dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/criar_conta_email"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="16sp"
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="339dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="18dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
