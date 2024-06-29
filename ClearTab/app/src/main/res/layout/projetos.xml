@@ -10,6 +10,8 @@
         android:layout_width="219dp"
         android:layout_height="49dp"
         android:layout_marginBottom="534dp"
+        android:background="@drawable/rounded_corners"
+        android:text="@string/projetos_adicionar"
         android:textSize="25sp"
         app:icon="@drawable/baseline_add_24"
         app:iconGravity="top"

@@ -13,6 +13,7 @@
         android:layout_marginTop="238dp"
         android:layout_marginBottom="447dp"
         android:background="@color/main_dark_green"
+        android:background="@drawable/rounded_corners"
         android:text="@string/projeto_editar"
         android:textColor="@color/white"
         app:icon="@drawable/outline_create_24"
@@ -33,7 +34,8 @@
         app:icon="@drawable/baseline_arrow_downward_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/rounded_corners"/>
 
     <TextView
         android:id="@+id/textView6"

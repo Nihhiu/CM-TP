@@ -26,4 +26,17 @@
     <string name="atualizar_perfil_confirmar">Confirm</string>
     <string name="atualizar_perfil_eleminar">Eliminate</string>
     <string name="perfil_pessoal_sair">Exit</string>
+    <string name="tarefa_em_andamento_titulo">Title:</string>
+    <string name="projetos_adicionar">Add</string>
+    <string name="slider3_passar">Pass for 4 page</string>
+    <string name="slider1_passar">Pass for 2 page</string>
+    <string name="slider2_passar">Pass for 3 page</string>
+    <string name="tarefa_em_andamento_tempo">Until:</string>
+    <string name="tarefa_em_andamento_data">Date:</string>
+    <string name="tarefa_finalizada">Finished:</string>
+    <string name="criar_tarefa_atribua_utilizadores">Assingn users:</string>
+    <string name="avaliacao_desempenho">Performance:</string>
+    <string name="avaliacao_comunicacao">Comunication:</string>
+    <string name="avaliacao_trabalho">Work:</string>
+    <string name="avaliacao_critica">Critic:</string>
 </resources>

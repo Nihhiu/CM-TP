@@ -27,4 +27,17 @@
     <string name="atualizar_perfil_confirmar">Confirmar</string>
     <string name="atualizar_perfil_eleminar">Eliminar</string>
     <string name="perfil_pessoal_sair">Sair</string>
+    <string name="tarefa_em_andamento_titulo">Titulo:</string>
+    <string name="projetos_adicionar">Adicionar</string>
+    <string name="slider3_passar">Passar para a pagina 4</string>
+    <string name="slider1_passar">Passar para a pagina 2</string>
+    <string name="slider2_passar">Passar para a pagina 3</string>
+    <string name="tarefa_em_andamento_tempo">Até:</string>
+    <string name="tarefa_em_andamento_data">Data:</string>
+    <string name="tarefa_finalizada">Concluido:</string>
+    <string name="criar_tarefa_atribua_utilizadores">Atribua utilizadores:</string>
+    <string name="avaliacao_desempenho">Desempenho:</string>
+    <string name="avaliacao_comunicacao">Comunicação:</string>
+    <string name="avaliacao_trabalho">Trabalho:</string>
+    <string name="avaliacao_critica">Crítica:</string>
 </resources>
