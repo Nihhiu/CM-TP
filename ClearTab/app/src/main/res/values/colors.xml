@@ -6,6 +6,7 @@
     <color name="main_dark_green">#053225</color>
     <color name="secondary_green">#204847</color>
     <color name="secondary_light_green">#4E8265</color>
+    <color name="dark_gray">#D9D9D9</color>
 
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>

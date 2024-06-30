@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView6"
@@ -24,31 +26,29 @@
         android:id="@+id/editTextText3"
         android:layout_width="376dp"
         android:layout_height="48dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="17dp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/login_username"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextText4"
-        android:layout_width="376dp"
+        android:layout_width="356dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="384dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="170dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="313dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="171dp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/criar_conta_nome"
         app:layout_constraintBottom_toTopOf="@+id/editTextText6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,15 +56,15 @@
         android:id="@+id/textView9"
         android:layout_width="217dp"
         android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="214dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="179dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/criar_conta_nome"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextText4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -86,29 +86,29 @@
         android:id="@+id/textView11"
         android:layout_width="180dp"
         android:layout_height="49dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="216dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="215dp"
         android:text="@string/criar_conta_email"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
     <EditText
         android:id="@+id/editTextText6"
-        android:layout_width="389dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="81dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="140dp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/criar_conta_email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/navigation_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
 
@@ -130,21 +130,32 @@
         android:layout_height="49dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="63dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="80dp"
         android:text="@string/atualizar_perfil_confirmar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="147dp"
         android:layout_height="50dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="79dp"
         android:text="@string/atualizar_perfil_eleminar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText6" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

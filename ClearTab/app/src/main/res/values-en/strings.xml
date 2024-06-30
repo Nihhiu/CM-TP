@@ -38,5 +38,10 @@
     <string name="avaliacao_desempenho">Performance:</string>
     <string name="avaliacao_comunicacao">Comunication:</string>
     <string name="avaliacao_trabalho">Work:</string>
-    <string name="avaliacao_critica">Critic:</string>
+    <string name="avaliacao_critica">Critic(optional):</string>
+    <string name="lista_tarefas_n_tarefas">Nothing more to do</string>
+    <string name="visualizar_tarefa_utilizador_tarefa_concluida">Task concluded?</string>
+    <string name="auto_avaliacao_dificuldade">Dificult:</string>
+    <string name="auto_avaliacao_tempo_investido">Time invested:</string>
+    <string name="auto_avaliacao_horas">Hours...</string>
 </resources>

@@ -21,7 +21,7 @@
         android:layout_width="190dp"
         android:layout_height="42dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="177dp"
         android:text="@string/tarefa_em_andamento_titulo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,54 +29,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="176dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_corners"
-        android:text="@string/projeto_editar"
-        app:icon="@drawable/outline_create_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
     <TextView
         android:id="@+id/textView14"
         android:layout_width="91dp"
         android:layout_height="28dp"
         android:layout_marginStart="39dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="272dp"
         android:text="@string/tarefa_em_andamento_tempo"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <EditText
         android:id="@+id/editTextDate"
         android:layout_width="241dp"
         android:layout_height="48dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="23dp"
         android:ems="10"
         android:inputType="date"
         android:text="@string/tarefa_em_andamento_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="113dp"
         android:layout_height="48dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="264dp"
         android:text="@string/criar_conta_membros"
         android:textColor="#000000"
@@ -87,15 +74,45 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="345dp"
-        android:layout_height="182dp"
+        android:id="@+id/recyclerView2"
+        android:layout_width="308dp"
+        android:layout_height="132dp"
         android:layout_marginStart="34dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="176dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="#60A561"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2"
+        app:srcCompat="@drawable/baseline_check_24"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="205dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="53dp"
+        android:text="@string/visualizar_tarefa_utilizador_tarefa_concluida"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_view"

@@ -71,13 +71,13 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/rounded_corners"
         android:text="@string/criar_projeto_confirmar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1"
-        android:background="@drawable/rounded_corners"/>
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
     <TextView
         android:id="@+id/textView8"

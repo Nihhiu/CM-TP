@@ -10,60 +10,30 @@
         android:layout_width="146dp"
         android:layout_height="55dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="114dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="227dp"
-        android:text="@string/criar_conta_nome"
+        android:text="@string/tarefa_em_andamento_titulo"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="146dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="227dp"
-        android:text="@string/avaliacao_desempenho"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <RatingBar
-        android:id="@+id/rating"
-        style="?android:attr/ratingBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="293dp"
-        android:isIndicator="true"
-        android:maxHeight="30dp"
-        android:minHeight="30dp"
-        android:numStars="5"
-        android:stepSize="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="145dp"
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="226dp"
-        android:text="@string/avaliacao_comunicacao"
+        android:text="@string/auto_avaliacao_dificuldade"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <RatingBar
         android:id="@+id/rating2"
@@ -87,7 +57,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="226dp"
-        android:text="@string/avaliacao_trabalho"
+        android:text="@string/criar_conta_membros"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,7 +87,7 @@
         android:layout_marginStart="39dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="226dp"
-        android:text="@string/avaliacao_critica"
+        android:text="@string/criar_conta_descricao"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,12 +104,40 @@
         android:layout_marginEnd="28dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/avaliacao_critica"
+        android:text="@string/criar_conta_descricao"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="186dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="188dp"
+        android:text="@string/auto_avaliacao_tempo_investido"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <EditText
+        android:id="@+id/editTextText10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="163dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/auto_avaliacao_horas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_view"
