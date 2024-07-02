@@ -1,5 +1,5 @@
 // HistoryFragment.kt
-package com.example.yourapp.ui.history
+package com.cleartab.cleartab.ui.history
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

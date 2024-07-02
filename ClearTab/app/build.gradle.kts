@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.cleartab.cleartab"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.cleartab.cleartab"
-        minSdk = 24
-        targetSdk = 34
+        minSdk = 27
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -26,12 +26,6 @@ android {
             )
         }
     }
-
-    packagingOptions {
-        exclude("META-INF/DEPENDENCIES")
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -45,7 +39,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

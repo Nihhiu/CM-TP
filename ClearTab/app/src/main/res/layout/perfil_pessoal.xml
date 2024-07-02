@@ -60,6 +60,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="@string/login_username"
+        android:hint="@string/login_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
@@ -74,6 +75,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="@string/criar_conta_nome"
+        android:hint="@string/criar_conta_nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
@@ -116,6 +118,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="@string/perfil_cargo"
+        android:hint="@string/perfil_cargo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
@@ -144,6 +147,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="@string/criar_conta_email"
+        android:hint="@string/criar_conta_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView11"

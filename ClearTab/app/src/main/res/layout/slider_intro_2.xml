@@ -17,6 +17,7 @@
         android:scaleX="1.4"
         android:scaleY="1.4"
         android:src="@drawable/slider2"
+        android:contentDescription="@string/slider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -29,6 +30,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="35dp"
         android:src="@drawable/logo_branco"
+        android:contentDescription="@string/slider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -32,6 +32,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="@string/login_username"
+        android:hint="@string/login_username"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,6 +48,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="@string/criar_conta_nome"
+        android:hint="@string/criar_conta_nome"
         app:layout_constraintBottom_toTopOf="@+id/editTextText6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +108,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="@string/criar_conta_email"
+        android:hint="@string/criar_conta_email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/navigation_view"

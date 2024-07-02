@@ -16,6 +16,7 @@
         android:layout_marginEnd="29dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/ic_forward_arrow"
+        android:contentDescription="@string/slider4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -30,6 +31,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp"
         android:src="@drawable/logo_branco"
+        android:contentDescription="@string/slider4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +58,7 @@
         android:id="@+id/imageView4"
         android:layout_width="367dp"
         android:layout_height="377dp"
+        android:contentDescription="@string/slider4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

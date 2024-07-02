@@ -54,6 +54,7 @@
         android:ems="10"
         android:inputType="date"
         android:text="@string/tarefa_em_andamento_data"
+        android:hint="@string/tarefa_em_andamento_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -92,6 +93,7 @@
         android:layout_marginTop="80dp"
         android:background="@drawable/rounded_corners"
         android:backgroundTint="#60A561"
+        android:contentDescription="@string/visualizar_tarefa_utilizador_tarefa_concluida"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.429"
         app:layout_constraintStart_toStartOf="parent"
