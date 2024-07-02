@@ -19,7 +19,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextText3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -46,11 +46,12 @@
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="171dp"
         android:ems="10"
+        android:hint="@string/criar_conta_nome"
         android:inputType="text"
         android:text="@string/criar_conta_nome"
-        android:hint="@string/criar_conta_nome"
         app:layout_constraintBottom_toTopOf="@+id/editTextText6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
