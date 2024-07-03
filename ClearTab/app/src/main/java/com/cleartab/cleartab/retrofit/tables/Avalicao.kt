@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Avalicao (
-    val idAvalicao: Long?,
+    val idAvalicao: Long? = null,
     val desempenho: String,
     val comunicacao: String,
     val trabalho: String,

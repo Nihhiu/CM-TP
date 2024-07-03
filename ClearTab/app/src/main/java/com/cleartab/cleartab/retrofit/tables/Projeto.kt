@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Projeto (
-    val idProjeto: Long?,
+    val idProjeto: Long? = null,
     val nome: String,
     val descricao: String,
     val membros: String

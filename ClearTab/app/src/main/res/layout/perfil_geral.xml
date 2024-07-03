@@ -36,60 +36,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="185dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="208dp"
-        android:text="@string/login_username"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <EditText
-        android:id="@+id/editTextText3"
-        android:layout_width="198dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="10dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/login_username"
-        android:hint="@string/login_username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
-
     <EditText
         android:id="@+id/editTextText4"
         android:layout_width="191dp"
         android:layout_height="48dp"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="97dp"
         android:layout_marginEnd="12dp"
+        android:layout_marginBottom="14dp"
         android:ems="10"
+        android:hint="@string/criar_conta_nome"
         android:inputType="text"
         android:text="@string/criar_conta_nome"
-        android:hint="@string/criar_conta_nome"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="181dp"
         android:layout_height="36dp"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="9dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/criar_conta_nome"
         android:textColor="#000000"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toStartOf="@+id/editTextText4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <TextView
         android:id="@+id/textView10"

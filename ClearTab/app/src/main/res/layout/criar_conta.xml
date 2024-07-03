@@ -9,7 +9,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="232dp"
         android:text="@string/login"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -18,12 +18,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="361dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginBottom="17dp"
+        android:ems="10"
+        android:hint="@string/criar_conta_nome"
+        android:inputType="text"
+        android:text="@string/criar_conta_nome"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="186dp"
         android:layout_height="32dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="190dp"
         android:text="@string/criar_conta_nome"
         android:textColor="#000000"
@@ -32,55 +52,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="361dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="97dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/criar_conta_nome"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="16sp"
-        android:hint="@string/criar_conta_nome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="200dp"
-        android:text="@string/login_username"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
-
-    <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="356dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="18dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/login_username"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="16sp"
-        android:hint="@string/login_username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
         android:id="@+id/button"
@@ -114,15 +85,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="316dp"
+        android:layout_marginBottom="7dp"
         android:text="@string/criar_conta_email"
         android:textColor="#000000"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
     <TextView
         android:id="@+id/textView8"
@@ -146,9 +119,8 @@
         android:layout_marginTop="7dp"
         android:layout_marginEnd="23dp"
         android:ems="10"
-        android:inputType="textPassword"
-        android:text="@string/login_password"
         android:hint="@string/login_password"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
