@@ -1,5 +1,8 @@
-package com.cleartab.cleartab.Retrofit.tabels
+package com.cleartab.cleartab.retrofit.tables
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Avalicao (
     val idAvalicao: Long?,
     val desempenho: String,

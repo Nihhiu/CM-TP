@@ -1,5 +1,8 @@
-package com.cleartab.cleartab.Retrofit.tabels
+package com.cleartab.cleartab.retrofit.tables
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Tarefa(
     val idTarefa: Long?,
     val idTarefaProjetos: Long?, // FK para ProjetosTarefas
