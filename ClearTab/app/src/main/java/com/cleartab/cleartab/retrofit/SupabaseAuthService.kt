@@ -1,7 +1,6 @@
 package com.cleartab.cleartab.retrofit
 
 //Import Connection
-import com.cleartab.cleartab.retrofit.supabase
 
 import com.cleartab.cleartab.retrofit.tables.Utilizador
 import com.cleartab.cleartab.retrofit.tables.TipoUtilizador
@@ -11,15 +10,15 @@ import com.cleartab.cleartab.retrofit.tables.Tarefa
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.Email
 import io.github.jan.supabase.postgrest.from
-import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns
 
 data class UserProfile(
     val utilizador: Utilizador,
-    val tiposUtilizador: List<TipoUtilizador>
+    val tiposUtilizador: TipoUtilizador
 )
 
 interface SupabaseAuthService {
+
 
 //  Utilizadores
     suspend fun signUp(utilizador: Utilizador): Boolean {
@@ -145,22 +144,7 @@ interface SupabaseAuthService {
         }
         return true
     }
-    suspend fun fetchProfilesList(): List<Utilizador>? {
-        try {
-            val response = supabase
-                .from("Utilizadores")
-                .select(
-                    columns = Columns.list("idUtilizador", "nome")
-                )
-                .decodeList<Utilizador>()
-
-            return response
-        } catch (e: Exception) {
-            println("Error: ${e.message}")
-        }
-        return null
-    }
-    suspend fun fetchProfile(idUtilizador: Long): UserProfile? {
+    suspend fun fetchProfile(idUtilizador: Long, idProjeto: Long): UserProfile? {
         try {
 //          Obter dados do utilizador
             val utilizadorResponse = supabase
@@ -177,9 +161,10 @@ interface SupabaseAuthService {
                 .select() {
                     filter {
                         eq("idUtilizador", idUtilizador)
+                        eq("idProjeto", idProjeto)
                     }
                 }
-                .decodeList<TipoUtilizador>()
+                .decodeSingle<TipoUtilizador>()
 //          Concatenar as informações
             return UserProfile(
                 utilizador = utilizadorResponse,
@@ -190,6 +175,7 @@ interface SupabaseAuthService {
         }
         return null
     }
+
 
 //  Projetos
     suspend fun createProject(projeto: Projeto, idUtilizador: Long): Boolean {
@@ -291,6 +277,7 @@ interface SupabaseAuthService {
         return null
     }
 
+
 //  Vincular TipoUtilizador ao Projeto
     suspend fun addUtilizadorToProject(tipoUtilizador: TipoUtilizador): Boolean {
         try {
@@ -309,9 +296,9 @@ interface SupabaseAuthService {
         //#TODO(remover utilizador do projeto)
         return false
     }
-    suspend fun fetchUtilizadorFromProject(idProjeto: Long): List<TipoUtilizador>? {
+    suspend fun fetchUtilizadorFromProject(idProjeto: Long): List<UserProfile>? {
         try {
-            val response = supabase
+            val listTipoUtilizador = supabase
                 .from("TipoUtilizador")
                 .select() {
                     filter {
@@ -320,12 +307,30 @@ interface SupabaseAuthService {
                 }
                 .decodeList<TipoUtilizador>()
 
-            return response
+            val idUtilizadorList = listTipoUtilizador.mapNotNull { it.idUtilizador }
+
+            val listUtilizador = supabase
+                .from("Utilizador")
+                .select(
+                    columns = Columns.list("idUtilizador", "nome")
+                ) {
+                    filter {
+                        isIn("idUtilizador", idUtilizadorList)
+                    }
+                }
+                .decodeList<Utilizador>()
+
+            val userProfiles: List<UserProfile> = listUtilizador.zip(listTipoUtilizador) { utilizador, tipoUtilizador ->
+                UserProfile(utilizador = utilizador, tiposUtilizador = tipoUtilizador)
+            }
+
+            return userProfiles
         } catch (e: Exception) {
             println("Error: ${e.message}")
         }
         return null
     }
+
 
 //  Tarefa
     suspend fun createTask(tarefa: Tarefa): Boolean {
@@ -349,6 +354,7 @@ interface SupabaseAuthService {
         return null
     }
 
+
 //  Vincular Tarefa ao Projeto
     suspend fun addTaskToProject(idTarefa: Long, idProjeto: Long): Boolean {
         //#TODO(adicionar tarefa ao projeto)
@@ -358,6 +364,7 @@ interface SupabaseAuthService {
         //#TODO(remover tarefa do projeto)
         return false
     }
+
 
 //  Avaliação
     suspend fun createRating(idUtilizador: Long, idTarefa: Long, avaliacao: Long): Boolean {
@@ -372,6 +379,7 @@ interface SupabaseAuthService {
         //#TODO(buscar apenas uma avaliação)
         return false
     }
+
 
 //  Vincular Utilizador a Tarefas
     suspend fun addUtilizadorToTask(idUtilizador: Long, idTarefa: Long): Boolean {
