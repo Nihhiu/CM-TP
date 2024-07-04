@@ -1,7 +1,5 @@
 package com.cleartab.cleartab.retrofit
 
-//Import Connection
-
 import com.cleartab.cleartab.retrofit.tables.*
 
 import io.github.jan.supabase.gotrue.auth
@@ -101,7 +99,7 @@ interface SupabaseAuthService {
                     }
                 ) {
                     filter {
-                        utilizador.idUtilizador?.let { eq("idUtilizador", it) }
+                        eq("idUtilizador", utilizador.idUtilizador!!)
                     }
                 }
 
@@ -294,8 +292,22 @@ interface SupabaseAuthService {
         return true
     }
     suspend fun removeUtilizadorFromProject(idUtilizador: Long, idProjeto: Long): Boolean {
-        //#TODO(remover utilizador do projeto)
-        return false
+        try {
+            val response = supabase
+                .from("TipoUtilizador")
+                .delete(){
+                    filter {
+                        eq("idProjeto", idProjeto)
+                        eq("idUtilizador", idUtilizador)
+                    }
+                }
+
+            println("Deleted Utilizador from Projeto successfully: ${response.data}")
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+            return false
+        }
+        return true
     }
     suspend fun fetchUtilizadorFromProject(idProjeto: Long): List<UserProfile>? {
         try {
@@ -427,17 +439,6 @@ interface SupabaseAuthService {
     }
 
 
-//  Vincular Tarefa ao Projeto
-    suspend fun addTaskToProject(idTarefa: Long, idProjeto: Long): Boolean {
-        //#TODO(adicionar tarefa ao projeto)
-        return false
-    }
-    suspend fun removeTaskFromProject(idTarefa: Long, idProjeto: Long): Boolean {
-        //#TODO(remover tarefa do projeto)
-        return false
-    }
-
-
 //  Auto-Avaliação Mensal
     suspend fun createRating(avaliacao: Avaliacao): Boolean {
         try {
@@ -511,23 +512,90 @@ interface SupabaseAuthService {
 
 //  Vincular Utilizador a Tarefas
     suspend fun addUtilizadorToTask(idUtilizador: Long, idTarefa: Long): Boolean {
-        //#TODO(adicionar utilizador a tarefa)
-        return false
+        try {
+            val utilizadorTarefa = UtilizadorTarefa(idUtilizador = idUtilizador, idTarefa = idTarefa, avaliacaoDificuldade = null, avaliacaoEquipa = null, descricao = null, tempoInvestido = null)
+
+            val response = supabase
+                .from("UtilizadorTarefa")
+                .insert(utilizadorTarefa)
+
+            println("Added Utilizador to Tarefa successfully: ${response.data}")
+            return true
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+            return false
+        }
     }
     suspend fun removeUtilizadorFromTask(idUtilizador: Long, idTarefa: Long): Boolean {
-        //#TODO(remover utilizador da tarefa)
-        return false
+        try {
+            val response = supabase
+                .from("UtilizadorTarefa")
+                .delete() {
+                    filter {
+                        eq("idUtilizador", idUtilizador)
+                        eq("idTarefa", idTarefa)
+                    }
+                }
+
+            println("Removed Utilizador from Tarefa successfully: ${response.data}")
+            return true
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+            return false
+        }
     }
-    suspend fun fetchUsersList(): Boolean {
-        //#TODO(buscar apenas os utilizadores)
-        return false
+    suspend fun fetchUsersList(idTarefa: Long): List<Utilizador>? {
+        try {
+            val listUtilizadorNaTarefa = supabase
+                .from("UtilizadorTarefa")
+                .select(){
+                    filter {
+                        eq("idTarefa", idTarefa)
+                    }
+                }
+                .decodeList<Avaliacao>()
+
+            val idUtilizadorList = listUtilizadorNaTarefa.map { it.idUtilizador }
+
+            val listUtilizador = supabase
+                .from("Utilizador")
+                .select(
+                    columns = Columns.list("idUtilizador", "nome")
+                ) {
+                    filter {
+                        isIn("idUtilizador", idUtilizadorList)
+                    }
+                }
+                .decodeList<Utilizador>()
+
+            return listUtilizador
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+        }
+        return null
     }
-    suspend fun addAvaliacao(tarefa: Tarefa): Boolean {
-        //#TODO(adicionar avaliação)
-        return false
+    suspend fun addAvaliacao(utilizadorTarefa: UtilizadorTarefa): Boolean {
+        try {
+            val response = supabase
+                .from("UtilizadorTarefa")
+                .update({
+                        set("avaliacaoDificuldade", utilizadorTarefa.avaliacaoDificuldade)
+                        set("avaliacaoEquipa", utilizadorTarefa.avaliacaoEquipa)
+                        set("descricao", utilizadorTarefa.descricao)
+                        set("tempoInvestido", utilizadorTarefa.tempoInvestido)
+                    }
+                ) {
+                    filter {
+                        eq("idUtilizador", utilizadorTarefa.idUtilizador)
+                        eq("idTarefa", utilizadorTarefa.idTarefa)
+                    }
+                }
+
+            println("Added Avaliacao to Tarefa successfully: ${response.data}")
+            return true
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+            return false
+        }
     }
 }
-
-
-
-

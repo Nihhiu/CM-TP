@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Tarefa(
     val idTarefa: Long? = null,
-    val idTarefaProjetos: Long, // FK para ProjetosTarefas
+    val idProjeto: Long, // FK para ProjetosTarefas
     val titulo: String,
     val data: String,
     val descricao: String
