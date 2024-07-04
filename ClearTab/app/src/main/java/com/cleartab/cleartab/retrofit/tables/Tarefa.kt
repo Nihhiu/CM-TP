@@ -8,6 +8,5 @@ data class Tarefa(
     val idTarefaProjetos: Long?, // FK para ProjetosTarefas
     val titulo: String,
     val data: String,
-    val descricao: String,
-    val users: String
+    val descricao: String
 )

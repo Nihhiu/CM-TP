@@ -11,6 +11,8 @@ import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.Email
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Columns
+import io.github.jan.supabase.postgrest.query.Order
+import kotlinx.serialization.internal.throwArrayMissingFieldException
 
 data class UserProfile(
     val utilizador: Utilizador,
@@ -334,23 +336,94 @@ interface SupabaseAuthService {
 
 //  Tarefa
     suspend fun createTask(tarefa: Tarefa): Boolean {
-        //#TODO(criar tarefa)
-        return false
+        try {
+            val response = supabase
+                .from("Tarefa")
+                .insert(tarefa)
+
+            println("Created Tarefa successfully: ${response.data}")
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+            return false
+        }
+        return true
     }
     suspend fun deleteTask(idTarefa: Long): Boolean {
-        //#TODO(eliminar tarefa)
-        return false
+        try {
+            val response = supabase
+                .from("Tarefa")
+                .delete(){
+                    filter {
+                        eq("idTarefa", idTarefa)
+                    }
+                }
+
+            println("Deleted Tarefa successfully: ${response.data}")
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+            return false
+        }
+        return true
     }
     suspend fun editTask(tarefa: Tarefa): Boolean {
-        //#TODO(editar tarefa)
+        try {
+//          Update Tarefa
+            val utilizadorResponse = supabase
+                .from("Tarefa")
+                .update(
+                    {
+                        set("titulo", tarefa.titulo)
+                        set("data", tarefa.data)
+                        set("descricao", tarefa.descricao)
+                    }
+                ) {
+                    filter {
+                        tarefa.idTarefa?.let { eq("idTarefa", it) }
+                    }
+                }
+
+            println("Updated Tarefa successfully.")
+            return true
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+        }
         return false
     }
-    suspend fun fetchTasksList(): Tarefa? {
-        //#TODO(buscar apenas o nome das tarefas)
+    suspend fun fetchTasksList(): List<Tarefa>? {
+        try {
+            val response = supabase
+                .from("Tarefa")
+                .select(
+                    columns = Columns.list("Tarefa", "titulo", "data")
+                ){
+                    order(
+                        column = "data",
+                        order = Order.ASCENDING
+                    )
+                }
+                .decodeList<Tarefa>()
+
+            return response
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+        }
         return null
     }
     suspend fun fetchTask(idTarefa: Long): Tarefa? {
-        //#TODO(buscar apenas uma tarefa)
+        try {
+            val response = supabase
+                .from("Tarefa")
+                .select(){
+                    filter {
+                        eq("idTarefa", idTarefa)
+                    }
+                }
+                .decodeSingle<Tarefa>()
+
+            return response
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+        }
         return null
     }
 
@@ -392,6 +465,10 @@ interface SupabaseAuthService {
     }
     suspend fun fetchUsersList(): Boolean {
         //#TODO(buscar apenas os utilizadores)
+        return false
+    }
+    suspend fun addAvaliacao(tarefa: Tarefa): Boolean {
+        //#TODO(adicionar avaliação)
         return false
     }
 }
