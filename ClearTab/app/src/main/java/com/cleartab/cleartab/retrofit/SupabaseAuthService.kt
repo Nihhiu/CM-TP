@@ -204,10 +204,15 @@ interface SupabaseAuthService {
             return false
         }
         //adicionar tipo de utilizador
-        if(projeto.idProjeto != null){
-            addUtilizadorToProject(idUtilizador, projeto.idProjeto)
-        } else {
-            println("Error: idProjeto is null")
+        val tipoUtilizador = TipoUtilizador(idUtilizador, projeto.idProjeto, "Admin")
+        try {
+            val response = supabase
+                .from("TipoUtilizador")
+                .insert(tipoUtilizador)
+
+            println("Added Utilizador to Project successfully: ${response.data}")
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
             return false
         }
         return true
@@ -287,13 +292,39 @@ interface SupabaseAuthService {
     }
 
 //  Vincular TipoUtilizador ao Projeto
-    suspend fun addUtilizadorToProject(idUtilizador: Long, idProjeto: Long): Boolean {
-        //#TODO(adicionar utilizador ao projeto)
-        return false
+    suspend fun addUtilizadorToProject(tipoUtilizador: TipoUtilizador): Boolean {
+        try {
+            val response = supabase
+                .from("TipoUtilizador")
+                .insert(tipoUtilizador)
+
+            println("Added Utilizador to Project successfully: ${response.data}")
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+            return false
+        }
+        return true
     }
     suspend fun removeUtilizadorFromProject(idUtilizador: Long, idProjeto: Long): Boolean {
         //#TODO(remover utilizador do projeto)
         return false
+    }
+    suspend fun fetchUtilizadorFromProject(idProjeto: Long): List<TipoUtilizador>? {
+        try {
+            val response = supabase
+                .from("TipoUtilizador")
+                .select() {
+                    filter {
+                        eq("idProjeto", idProjeto)
+                        }
+                }
+                .decodeList<TipoUtilizador>()
+
+            return response
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+        }
+        return null
     }
 
 //  Tarefa
