@@ -4,15 +4,20 @@ import android.content.Intent
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.cleartab.cleartab.R
-import com.cleartab.cleartab.retrofit.SupabaseAuthService.*
-import com.cleartab.cleartab.retrofit.supabase
-import io.github.jan.supabase.gotrue.auth
-import io.github.jan.supabase.gotrue.user.UserInfo
+import com.cleartab.cleartab.retrofit.SupabaseService
+import com.cleartab.cleartab.ui.login.login
+import com.cleartab.cleartab.retrofit.tables.*
 
 class atualizar_perfil : AppCompatActivity(){
     private lateinit var anome: EditText
@@ -20,6 +25,7 @@ class atualizar_perfil : AppCompatActivity(){
     private lateinit var aemail: EditText
     private lateinit var aconfirmar: Button
     private lateinit var aeliminar: Button
+    private val db = SupabaseService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,13 +39,17 @@ class atualizar_perfil : AppCompatActivity(){
         aeliminar = findViewById(R.id.button6)
 
 
+
         aconfirmar.setOnClickListener {
-            val email = UserInfo.getInstance().email
+            val email = aemail.text.toString()
             val nome = anome.text.toString().trim()
             val cargo = acargo.selectedItemPosition
+            val fetch = db.fetchProfile()
 
             if (email.isNotEmpty() && nome.isNotEmpty() && cargo >= 0) {
-                editProfile(email, nome, cargo)
+                lifecycleScope.launch {
+                    val response = db.editProfile()
+                }
             } else {
                 Toast.makeText(this, "Todos os campos devem ser preenchidos", Toast.LENGTH_LONG).show()
             }

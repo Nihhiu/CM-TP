@@ -20,5 +20,11 @@
         android:id="@+id/criar_conta"
         android:name="com.cleartab.cleartab.ui.criar_conta.criarContaFragment"
         android:label="fragment_criar_conta"
-        tools:layout="@layout/criar_conta" />
+        tools:layout="@layout/criar_conta" >
+        <action
+            android:id="@+id/action_criar_conta_to_login"
+            app:destination="@id/login"
+            app:exitAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@id/login" />
+    </fragment>
 </navigation>

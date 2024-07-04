@@ -18,10 +18,11 @@ data class AvaliacaoProfile(
     val avaliacao: Avaliacao
 )
 
-interface SupabaseAuthService {
+class SupabaseService {
 
 
 //  Utilizadores
+
     suspend fun signUp(utilizador: Utilizador): Boolean {
 
 //      Criar conta no Auth do Supabase

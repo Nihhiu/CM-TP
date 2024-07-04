@@ -8,5 +8,5 @@ data class Utilizador(
     val nome: String,
     val password: String,
     val email: String,
-    val fotografia: String
+    val fotografia: String?
 )

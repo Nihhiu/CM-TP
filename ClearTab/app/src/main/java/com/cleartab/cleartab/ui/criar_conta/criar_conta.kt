@@ -5,6 +5,8 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -12,10 +14,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cleartab.cleartab.R
-import com.cleartab.cleartab.retrofit.SupabaseAuthService.*
-import com.cleartab.cleartab.retrofit.supabase
-import io.github.jan.supabase.gotrue.auth
-import io.ktor.util.reflect.instanceOf
+import com.cleartab.cleartab.retrofit.SupabaseService
+import com.cleartab.cleartab.ui.login.login
+import com.cleartab.cleartab.retrofit.tables.*
 
 class criar_conta : AppCompatActivity() {
     private lateinit var cemail : EditText
@@ -23,6 +24,7 @@ class criar_conta : AppCompatActivity() {
     private lateinit var ccriar_conta : Button
     private lateinit var cnome : EditText
     private lateinit var centre: TextView
+    private val db = SupabaseService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +43,7 @@ class criar_conta : AppCompatActivity() {
         centre = findViewById(R.id.textView30)
 
         centre.setOnClickListener {
-            val intent: Intent(this, login::class.java)
+            val intent = Intent(this, login::class.java)
             startActivity(intent)
         }
 
@@ -49,9 +51,12 @@ class criar_conta : AppCompatActivity() {
             val cemail = cemail.text.toString()
             val cpassword = cpassword.text.toString()
             val cnome = cnome.text.toString()
+            val utilizador = Utilizador(email = cemail, password = cpassword, nome = cnome, fotografia = null)
 
             if(cemail.isNotEmpty() && cpassword.isNotEmpty() && cnome.isNotEmpty()){
-                signUp(cemail, cpassword, cnome)
+                lifecycleScope.launch {
+                    val response = db.signUp(utilizador)
+                }
             } else{
                 showError("Por favor preencha todos os campos")
                 Log.e("Login","Campos de email ou senha vazios")
