@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/login">
+
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.cleartab.cleartab.ui.login.loginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/login" >
+        <action
+            android:id="@+id/action_login_to_criar_conta"
+            app:destination="@id/criar_conta"
+            app:popUpTo="@id/criar_conta" />
+    </fragment>
+    <fragment
+        android:id="@+id/criar_conta"
+        android:name="com.cleartab.cleartab.ui.criar_conta.criarContaFragment"
+        android:label="fragment_criar_conta"
+        tools:layout="@layout/criar_conta" />
+</navigation>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/slider_intro_navigation"
+    app:startDestination="@id/slider__intro">
+    <fragment
+        android:id="@+id/slider__intro"
+        android:name="com.cleartab.cleartab.ui.slider_intro.slider__intro"
+        android:label="@string/slider1"
+        tools:layout="@layout/slider__intro" >
+        <action
+            android:id="@+id/action_slider__intro_to_slider_intro_2"
+            app:destination="@id/slider_intro_2"
+            app:popUpTo="@id/slider_intro_2" />
+    </fragment>
+    <fragment
+        android:id="@+id/slider_intro_2"
+        android:name="com.cleartab.cleartab.ui.slider_intro.slider_intro_2"
+        android:label="@string/slider2"
+        tools:layout="@layout/slider_intro_2" >
+        <action
+            android:id="@+id/action_slider_intro_2_to_slider_intro_3"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@id/slider_intro_3" />
+    </fragment>
+    <fragment
+        android:id="@+id/slider_intro_3"
+        android:name="com.cleartab.cleartab.ui.slider_intro.slider_intro_3"
+        android:label="@string/slider3"
+        tools:layout="@layout/slider_intro_3" >
+        <action
+            android:id="@+id/action_slider_intro_3_to_slider_intro_4"
+            app:destination="@id/slider_intro_4"
+            app:popUpTo="@id/slider_intro_4" />
+    </fragment>
+    <fragment
+        android:id="@+id/slider_intro_4"
+        android:name="com.cleartab.cleartab.ui.slider_intro.slider_intro_4"
+        android:label="@string/slider4"
+        tools:layout="@layout/slider_intro_4" >
+    </fragment>
+</navigation>

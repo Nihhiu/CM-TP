@@ -43,4 +43,9 @@
     <string name="auto_avaliacao_dificuldade">Dificuldade:</string>
     <string name="auto_avaliacao_tempo_investido">Tempo investido:</string>
     <string name="auto_avaliacao_horas">Horas...</string>
+    <string name="login_cria_uma">Cria uma!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="criar_conta_entre">Entre!</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>

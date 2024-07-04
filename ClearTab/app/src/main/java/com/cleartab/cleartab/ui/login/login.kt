@@ -1,4 +1,4 @@
-package com.cleartab.cleartab.ui
+package com.cleartab.cleartab.ui.login
 
 import android.content.Intent
 import android.widget.EditText
@@ -12,8 +12,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cleartab.cleartab.R
-import com.cleartab.cleartab.retrofit.SupabaseAuthService
+import com.cleartab.cleartab.retrofit.SupabaseAuthService.*
 import com.cleartab.cleartab.retrofit.supabase
+import io.github.jan.supabase.gotrue.auth
+import io.ktor.util.reflect.instanceOf
 
 class login : AppCompatActivity(){
     private lateinit var lemail : EditText
@@ -48,17 +50,12 @@ class login : AppCompatActivity(){
             val password = lpassword.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                loginfunc(email, password)
+                logIn(email, password)
             } else {
                 showError("Por favor, preencha todos os campos")
                 Log.e("Login", "Campos de email ou senha vazios")
             }
         }
-    }
-
-    // TODO funcao de login
-    private fun loginfunc(email: String, password: String) {
-        val service = supabase.instance.create(SupabaseAuthService::class.java)
     }
 
     private fun showError(message: String) {
