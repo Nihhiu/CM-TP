@@ -2,21 +2,22 @@ package com.cleartab.cleartab.retrofit
 
 //Import Connection
 
-import com.cleartab.cleartab.retrofit.tables.Utilizador
-import com.cleartab.cleartab.retrofit.tables.TipoUtilizador
-import com.cleartab.cleartab.retrofit.tables.Projeto
-import com.cleartab.cleartab.retrofit.tables.Tarefa
+import com.cleartab.cleartab.retrofit.tables.*
 
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.Email
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Columns
 import io.github.jan.supabase.postgrest.query.Order
-import kotlinx.serialization.internal.throwArrayMissingFieldException
 
 data class UserProfile(
     val utilizador: Utilizador,
     val tiposUtilizador: TipoUtilizador
+)
+
+data class AvaliacaoProfile(
+    val utilizador: String,
+    val avaliacao: Avaliacao
 )
 
 interface SupabaseAuthService {
@@ -182,18 +183,16 @@ interface SupabaseAuthService {
 //  Projetos
     suspend fun createProject(projeto: Projeto, idUtilizador: Long): Boolean {
         try {
-            val response = supabase
+            val projetoCriado = supabase
                 .from("Projeto")
                 .insert(projeto)
+                .decodeSingle<Projeto>()
 
-            println("Created Projeto successfully: ${response.data}")
-        } catch (e: Exception) {
-            println("Error: ${e.message}")
-            return false
-        }
-        //adicionar tipo de utilizador
-        val tipoUtilizador = TipoUtilizador(idUtilizador, projeto.idProjeto, "Admin")
-        try {
+            println("Created Projeto successfully: $projetoCriado")
+//          Adicionar tipo de utilizador
+
+            val tipoUtilizador = TipoUtilizador(idUtilizador, projetoCriado.idProjeto!!, "Admin")
+
             val response = supabase
                 .from("TipoUtilizador")
                 .insert(tipoUtilizador)
@@ -309,7 +308,7 @@ interface SupabaseAuthService {
                 }
                 .decodeList<TipoUtilizador>()
 
-            val idUtilizadorList = listTipoUtilizador.mapNotNull { it.idUtilizador }
+            val idUtilizadorList = listTipoUtilizador.map { it.idUtilizador }
 
             val listUtilizador = supabase
                 .from("Utilizador")
@@ -439,18 +438,74 @@ interface SupabaseAuthService {
     }
 
 
-//  Avaliação
-    suspend fun createRating(idUtilizador: Long, idTarefa: Long, avaliacao: Long): Boolean {
-        //#TODO(criar avaliação)
-        return false
+//  Auto-Avaliação Mensal
+    suspend fun createRating(avaliacao: Avaliacao): Boolean {
+        try {
+            val response = supabase
+                .from("Avaliacao")
+                .insert(avaliacao)
+
+            println("Created Avaliacao successfully: ${response.data}")
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+            return false
+        }
+        return true
     }
-    suspend fun fetchRatingsList(): Boolean {
-        //#TODO(buscar apenas as avaliações)
-        return false
+    suspend fun fetchRatingsList(mes: Int, ano: Int): List<AvaliacaoProfile>? {
+        try {
+            val listAvaliacao = supabase
+                .from("Avaliacao")
+                .select(){
+                    filter {
+                        eq("mes", mes)
+                        eq("ano", ano)
+                    }
+                }
+                .decodeList<Avaliacao>()
+
+            val idUtilizadorList = listAvaliacao.map { it.idUtilizador }
+
+            val listUtilizador = supabase
+                .from("Utilizador")
+                .select(
+                    columns = Columns.list("idUtilizador", "nome")
+                ) {
+                    filter {
+                        isIn("idUtilizador", idUtilizadorList)
+                    }
+                }
+                .decodeList<Utilizador>()
+
+            val avaliacaoProfile: List<AvaliacaoProfile> = listUtilizador.zip(listAvaliacao) { utilizador, avaliacao ->
+                AvaliacaoProfile(utilizador = utilizador.nome, avaliacao = avaliacao)
+            }
+
+
+            return avaliacaoProfile
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+        }
+        return null
     }
-    suspend fun fetchRating(idUtilizador: Long, idTarefa: Long): Boolean {
-        //#TODO(buscar apenas uma avaliação)
-        return false
+    suspend fun fetchRating(idUtilizador: Long, mes: Int, ano: Int): Avaliacao? {
+        try {
+            val response = supabase
+                .from("Tarefa")
+                .select(){
+                    filter {
+                        eq("mes", mes)
+                        eq("ano", ano)
+                        eq("idUtilizador", idUtilizador)
+                    }
+                }
+                .decodeSingle<Avaliacao>()
+
+            return response
+        } catch (e: Exception) {
+            println("Error: ${e.message}")
+        }
+        return null
     }
 
 
