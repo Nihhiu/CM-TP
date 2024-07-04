@@ -140,4 +140,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="171dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/criar_conta_entre"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
