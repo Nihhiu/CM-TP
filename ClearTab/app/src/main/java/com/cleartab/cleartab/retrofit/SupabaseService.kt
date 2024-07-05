@@ -49,17 +49,7 @@ class SupabaseService {
         }
         return false
     }
-    suspend fun logIn(emailLogin: String, passwordLogin: String): Boolean {
-//      Login no Auth
-        kotlin.runCatching {
-            supabase.auth.signInWith(Email) {
-                email = emailLogin
-                password = passwordLogin
-            }
-        }.onFailure {
-            println("There was an error while loging in: ${it.message}")
-            return false
-        }
+    suspend fun logIn(emailLogin: String, passwordLogin: String): Long? {
 
 //      Verificar se existe na DB
         val existsUserEmail = supabase
@@ -72,10 +62,27 @@ class SupabaseService {
 
         if (existsUserEmail.data.isEmpty()) {
             println("User doesn't exist")
-            return false
-        } else {
-            return true
+            return null
         }
+        val idUtilizador = supabase
+            .from("Utilizador")
+            .select(columns = Columns.list("idUtilizador")) {
+                filter {
+                    eq("email", emailLogin)
+                    }
+            }
+            .decodeSingle<Utilizador>()
+        //      Login no Auth
+        kotlin.runCatching {
+            supabase.auth.signInWith(Email) {
+                email = emailLogin
+                password = passwordLogin
+            }
+        }.onFailure {
+            println("There was an error while loging in: ${it.message}")
+            return null
+        }
+        return idUtilizador.idUtilizador
     }
     suspend fun signOut(): Boolean {
         kotlin.runCatching {

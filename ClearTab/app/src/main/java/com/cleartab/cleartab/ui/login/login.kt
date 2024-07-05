@@ -52,7 +52,12 @@ class login : AppCompatActivity(){
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                     lifecycleScope.launch {
-                        val response = db.logIn(email, password)
+                        val idUtilizador = db.logIn(email, password)
+                        if (idUtilizador != null){
+                            saveUserIdToPreferences(idUtilizador)
+                        } else {
+                            showError("Email ou senha incorretos")
+                        }
                     }
             } else {
                 showError("Por favor, preencha todos os campos")
@@ -60,6 +65,15 @@ class login : AppCompatActivity(){
             }
         }
     }
+
+    private fun saveUserIdToPreferences(userId: Long) {
+        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putLong("ID_UTILIZADOR", userId)
+        editor.apply()
+    }
+
+
     private fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         lemail.error = message

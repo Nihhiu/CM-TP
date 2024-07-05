@@ -44,11 +44,12 @@ class atualizar_perfil : AppCompatActivity(){
             val email = aemail.text.toString()
             val nome = anome.text.toString().trim()
             val cargo = acargo.selectedItemPosition
-            val fetch = db.fetchProfile()
 
             if (email.isNotEmpty() && nome.isNotEmpty() && cargo >= 0) {
                 lifecycleScope.launch {
-                    val response = db.editProfile()
+                    val idUtilizador: Long =
+                    val idProjeto: Long =
+                    val userProfile = db.fetchProfile(idUtilizador, idProjeto)
                 }
             } else {
                 Toast.makeText(this, "Todos os campos devem ser preenchidos", Toast.LENGTH_LONG).show()
