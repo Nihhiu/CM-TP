@@ -14,6 +14,7 @@ import com.cleartab.cleartab.R
 import com.cleartab.cleartab.retrofit.SupabaseService
 import com.cleartab.cleartab.utils.*
 import com.cleartab.cleartab.utils.SharedPreferencesUtil
+import com.cleartab.cleartab.ui.home.home
 class perfil_pessoal: AppCompatActivity() {
     private lateinit var pnome: EditText
     private lateinit var pcargo: EditText
