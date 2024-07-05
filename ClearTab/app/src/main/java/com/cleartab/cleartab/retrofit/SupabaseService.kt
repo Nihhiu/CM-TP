@@ -251,16 +251,31 @@ class SupabaseService {
         }
         return false
     }
-    suspend fun fetchProjectsList(): List<Projeto>? {
+    suspend fun fetchProjectsList(idUtilizador: Long): List<Projeto>? {
         try {
-            val response = supabase
+            val projectsUserIDs = supabase
+                .from("TipoUtilizador")
+                .select(){
+                    filter {
+                        eq("idUtilizador", idUtilizador)
+                    }
+                }
+                .decodeList<TipoUtilizador>()
+
+            val projectsIDs = projectsUserIDs.map { it.idProjeto }
+
+            val projectList = supabase
                 .from("Projeto")
                 .select(
                     columns = Columns.list("idProjeto", "nome")
-                )
+                ){
+                    filter {
+                        isIn("idProjeto", projectsIDs)
+                    }
+                }
                 .decodeList<Projeto>()
 
-            return response
+            return projectList
         } catch (e: Exception) {
             println("Error: ${e.message}")
         }
