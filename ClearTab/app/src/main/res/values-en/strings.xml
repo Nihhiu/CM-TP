@@ -46,4 +46,5 @@
     <string name="auto_avaliacao_horas">Hours...</string>
     <string name="login_cria_uma">Create one!</string>
     <string name="criar_conta_entre">Start!</string>
+    <string name="criar_conta_descricao_text">Description</string>
 </resources>
