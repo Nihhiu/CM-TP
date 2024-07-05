@@ -2,9 +2,7 @@ package com.cleartab.cleartab.ui.projetos
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,9 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cleartab.cleartab.R
 import com.cleartab.cleartab.retrofit.SupabaseService
-import com.cleartab.cleartab.retrofit.tables.Projeto
 import com.cleartab.cleartab.ui.criar_projeto.criar_projeto
-import com.cleartab.cleartab.ui.home.home
 import com.cleartab.cleartab.utils.SharedPreferencesUtil
 import kotlinx.coroutines.launch
 

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +13,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.cleartab.cleartab.R
 import com.cleartab.cleartab.retrofit.SupabaseService
-import com.cleartab.cleartab.retrofit.tables.Utilizador
 import com.cleartab.cleartab.retrofit.tables.Projeto
-import com.cleartab.cleartab.ui.home.HomeFragment
-import com.cleartab.cleartab.ui.home.HomeViewModel
 import com.cleartab.cleartab.ui.home.home
-import com.cleartab.cleartab.ui.login.login
 import com.cleartab.cleartab.utils.SharedPreferencesUtil
 import kotlinx.coroutines.launch
 
