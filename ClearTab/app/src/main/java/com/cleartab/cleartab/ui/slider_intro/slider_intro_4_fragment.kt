@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.cleartab.cleartab.R
 
-class slider_intro_4 : Fragment() {
+class slider_intro_4_fragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

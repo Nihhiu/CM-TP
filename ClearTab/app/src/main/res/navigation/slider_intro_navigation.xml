@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/slider_intro_3"
-        android:name="com.cleartab.cleartab.ui.slider_intro.slider_intro_3"
+        android:name="com.cleartab.cleartab.ui.slider_intro.slider_intro_3_fragment"
         android:label="@string/slider3"
         tools:layout="@layout/slider_intro_3" >
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/slider_intro_4"
-        android:name="com.cleartab.cleartab.ui.slider_intro.slider_intro_4"
+        android:name="com.cleartab.cleartab.ui.slider_intro.slider_intro_4_fragment"
         android:label="@string/slider4"
         tools:layout="@layout/slider_intro_4" >
     </fragment>
