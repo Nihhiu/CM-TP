@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.cleartab.cleartab.R
 import com.cleartab.cleartab.retrofit.SupabaseService
 import com.cleartab.cleartab.ui.criar_conta.criar_conta
+import com.cleartab.cleartab.utils.*
 
 class login : AppCompatActivity(){
     private lateinit var lemail : EditText
@@ -54,7 +55,7 @@ class login : AppCompatActivity(){
                     lifecycleScope.launch {
                         val idUtilizador = db.logIn(email, password)
                         if (idUtilizador != null){
-                            saveUserIdToPreferences(idUtilizador)
+                            SharedPreferencesUtil.saveIds(this@login, "ID_UTILIZADOR", idUtilizador)
                         } else {
                             showError("Email ou senha incorretos")
                         }
@@ -64,13 +65,6 @@ class login : AppCompatActivity(){
                 Log.e("Login", "Campos de email ou senha vazios")
             }
         }
-    }
-
-    private fun saveUserIdToPreferences(userId: Long) {
-        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putLong("ID_UTILIZADOR", userId)
-        editor.apply()
     }
 
 

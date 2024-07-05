@@ -18,6 +18,7 @@ import com.cleartab.cleartab.R
 import com.cleartab.cleartab.retrofit.SupabaseService
 import com.cleartab.cleartab.ui.login.login
 import com.cleartab.cleartab.retrofit.tables.*
+import com.cleartab.cleartab.utils.SharedPreferencesUtil
 
 class atualizar_perfil : AppCompatActivity(){
     private lateinit var anome: EditText
@@ -47,8 +48,8 @@ class atualizar_perfil : AppCompatActivity(){
 
             if (email.isNotEmpty() && nome.isNotEmpty() && cargo >= 0) {
                 lifecycleScope.launch {
-                    val idUtilizador: Long =
-                    val idProjeto: Long =
+                    val idUtilizador: Long = SharedPreferencesUtil.getIDs(this@atualizar_perfil, "ID_UTILIZADOR")
+                    val idProjeto: Long = SharedPreferencesUtil.getIDs(this@atualizar_perfil, "ID_PROJETO")
                     val userProfile = db.fetchProfile(idUtilizador, idProjeto)
                 }
             } else {
