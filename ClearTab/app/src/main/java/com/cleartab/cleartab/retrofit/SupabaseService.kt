@@ -187,7 +187,7 @@ class SupabaseService {
 
 
 //  Projetos
-    suspend fun createProject(projeto: Projeto, idUtilizador: Long): Boolean {
+    suspend fun createProject(projeto: Projeto, idUtilizador: Long): Long? {
         try {
             val projetoCriado = supabase
                 .from("Projeto")
@@ -195,8 +195,8 @@ class SupabaseService {
                 .decodeSingle<Projeto>()
 
             println("Created Projeto successfully: $projetoCriado")
-//          Adicionar tipo de utilizador
 
+//          Adicionar tipo de utilizador
             val tipoUtilizador = TipoUtilizador(idUtilizador, projetoCriado.idProjeto!!, "Admin")
 
             val response = supabase
@@ -204,11 +204,11 @@ class SupabaseService {
                 .insert(tipoUtilizador)
 
             println("Added Utilizador to Project successfully: ${response.data}")
+            return projetoCriado.idProjeto
         } catch (e: Exception) {
             println("Error: ${e.message}")
-            return false
+            return null
         }
-        return true
     }
     suspend fun deleteProject(idProjeto: Long): Boolean {
 //      Delete from DB projeto
@@ -251,16 +251,31 @@ class SupabaseService {
         }
         return false
     }
-    suspend fun fetchProjectsList(): List<Projeto>? {
+    suspend fun fetchProjectsList(idUtilizador: Long): List<Projeto>? {
         try {
-            val response = supabase
+            val projectsUserIDs = supabase
+                .from("TipoUtilizador")
+                .select(){
+                    filter {
+                        eq("idUtilizador", idUtilizador)
+                    }
+                }
+                .decodeList<TipoUtilizador>()
+
+            val projectsIDs = projectsUserIDs.map { it.idProjeto }
+
+            val projectList = supabase
                 .from("Projeto")
                 .select(
                     columns = Columns.list("idProjeto", "nome")
-                )
+                ){
+                    filter {
+                        isIn("idProjeto", projectsIDs)
+                    }
+                }
                 .decodeList<Projeto>()
 
-            return response
+            return projectList
         } catch (e: Exception) {
             println("Error: ${e.message}")
         }
@@ -286,8 +301,19 @@ class SupabaseService {
 
 
 //  Vincular TipoUtilizador ao Projeto
-    suspend fun addUtilizadorToProject(tipoUtilizador: TipoUtilizador): Boolean {
+    suspend fun addUtilizadorToProject(email: String, idProjeto: Long): Boolean {
         try {
+            val idUtilizador = supabase
+                .from("Utilizador")
+                .select() {
+                    filter {
+                        eq("email", email)
+                    }
+                }
+                .decodeSingle<Utilizador>()
+
+            val tipoUtilizador = TipoUtilizador(idUtilizador = idUtilizador.idUtilizador!!, idProjeto = idProjeto, tipo = "Utilizador")
+
             val response = supabase
                 .from("TipoUtilizador")
                 .insert(tipoUtilizador)
