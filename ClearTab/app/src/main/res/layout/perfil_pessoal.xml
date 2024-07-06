@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/pg_nome"
         android:layout_width="191dp"
         android:layout_height="48dp"
         android:layout_marginStart="9dp"
@@ -67,7 +67,7 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText4"
+        app:layout_constraintEnd_toStartOf="@+id/pg_nome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
@@ -98,7 +98,7 @@
         android:hint="@string/perfil_cargo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/pg_nome" />
 
     <TextView
         android:id="@+id/textView11"
@@ -110,12 +110,12 @@
         android:text="@string/criar_conta_email"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText6"
+        app:layout_constraintEnd_toStartOf="@+id/ap_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/editTextText6"
+        android:id="@+id/ap_email"
         android:layout_width="187dp"
         android:layout_height="48dp"
         android:layout_marginStart="13dp"

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/avaliacao">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView21"
@@ -36,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <RatingBar
-        android:id="@+id/rating"
+        android:id="@+id/a_desempenho"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,7 +63,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating" />
+        app:layout_constraintTop_toBottomOf="@+id/a_desempenho" />
 
     <RatingBar
         android:id="@+id/rating2"
@@ -97,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rating2" />
 
     <RatingBar
-        android:id="@+id/rating3"
+        android:id="@+id/a_trabalho"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -124,10 +123,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating3" />
+        app:layout_constraintTop_toBottomOf="@+id/a_trabalho" />
 
     <EditText
-        android:id="@+id/editTextText9"
+        android:id="@+id/a_critica"
         android:layout_width="346dp"
         android:layout_height="83dp"
         android:layout_marginStart="37dp"
@@ -143,18 +142,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:itemIconTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/a_confirmar"
         android:layout_width="149dp"
         android:layout_height="57dp"
         android:layout_marginStart="122dp"
@@ -164,4 +153,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 </androidx.constraintlayout.widget.ConstraintLayout>

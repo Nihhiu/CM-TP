@@ -7,24 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="356dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="313dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="171dp"
-        android:ems="10"
-        android:hint="@string/criar_conta_nome"
-        android:inputType="text"
-        android:text="@string/criar_conta_nome"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView9"
         android:layout_width="217dp"
@@ -35,10 +17,28 @@
         android:text="@string/criar_conta_nome"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText4"
+        app:layout_constraintBottom_toTopOf="@+id/ap_nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ap_nome"
+        android:layout_width="356dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="313dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="171dp"
+        android:autofillHints="@string/criar_conta_nome"
+        android:ems="10"
+        android:hint="@string/criar_conta_nome"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/ap_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView10"
@@ -53,7 +53,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/ap_nome" />
+
+    <Spinner
+        android:id="@+id/ap_cargo"
+        android:layout_width="339dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/textView11"
@@ -67,39 +79,28 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
+        app:layout_constraintTop_toBottomOf="@+id/ap_cargo" />
 
     <EditText
-        android:id="@+id/editTextText6"
+        android:id="@+id/ap_email"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="13dp"
         android:layout_marginBottom="140dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:text="@string/criar_conta_email"
         android:hint="@string/criar_conta_email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/navigation_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/ap_nome" />
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="339dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.208"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/ap_confirmar"
         android:layout_width="150dp"
         android:layout_height="49dp"
         android:layout_marginStart="24dp"
@@ -107,12 +108,12 @@
         android:layout_marginBottom="80dp"
         android:text="@string/atualizar_perfil_confirmar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/ap_eliminar"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/ap_eliminar"
         android:layout_width="147dp"
         android:layout_height="50dp"
         android:layout_marginTop="11dp"
@@ -121,7 +122,7 @@
         android:text="@string/atualizar_perfil_eleminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText6" />
+        app:layout_constraintTop_toBottomOf="@+id/ap_email" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_view"

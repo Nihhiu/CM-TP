@@ -36,11 +36,11 @@ class criar_conta : AppCompatActivity() {
             insets
         }
 
-        cemail = findViewById(R.id.editTextTextEmailAddress)
-        cpassword = findViewById(R.id.editTextTextPassword2)
-        cnome = findViewById(R.id.editTextText)
-        ccriar_conta = findViewById(R.id.button)
-        centre = findViewById(R.id.textView30)
+        cemail = findViewById(R.id.cc_email)
+        cpassword = findViewById(R.id.cc_password)
+        cnome = findViewById(R.id.cc_nome)
+        ccriar_conta = findViewById(R.id.cc_criar_conta)
+        centre = findViewById(R.id.cc_entre)
 
         centre.setOnClickListener {
             val intent = Intent(this, login::class.java)

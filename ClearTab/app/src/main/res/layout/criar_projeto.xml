@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/criar_projeto">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView3"
@@ -22,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/cp_nome"
         android:layout_width="361dp"
         android:layout_height="48dp"
         android:layout_marginStart="35dp"
@@ -53,34 +52,22 @@
         app:layout_constraintVertical_bias="0.392" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/cp_descricao"
         android:layout_width="359dp"
         android:layout_height="148dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="37dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="18dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/criar_conta_descricao_text"
+        android:text="@string/criar_conta_descricao"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp"
-        android:hint="@string/criar_conta_descricao_text"
+        android:hint="@string/criar_conta_descricao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/rounded_corners"
-        android:text="@string/criar_projeto_confirmar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
     <TextView
         android:id="@+id/textView8"
@@ -95,23 +82,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/cp_descricao" />
 
-    <EditText
+<<<<<<< Updated upstream
+    <Spinner
         android:id="@+id/spinner1"
+=======
+    <EditText
+        android:id="@+id/cp_membros"
+>>>>>>> Stashed changes
         android:layout_width="339dp"
         android:layout_height="54dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
         android:layout_marginTop="18dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/criar_conta_membros"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="16sp"
-        android:hint="@string/criar_conta_descricao"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+    
+    <Button
+        android:id="@+id/cp_confirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/rounded_corners"
+        android:text="@string/criar_projeto_confirmar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cp_membros" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

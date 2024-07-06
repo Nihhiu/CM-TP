@@ -7,21 +7,6 @@
     android:id="@+id/criar_tarefas">
 
     <TextView
-        android:id="@+id/textView20"
-        android:layout_width="195dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="261dp"
-        android:text="@string/criar_tarefa_atribua_utilizadores"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText8" />
-
-    <TextView
         android:id="@+id/textView17"
         android:layout_width="95dp"
         android:layout_height="33dp"
@@ -36,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText7"
+        android:id="@+id/ct_titulo"
         android:layout_width="341dp"
         android:layout_height="49dp"
         android:layout_marginStart="40dp"
@@ -62,10 +47,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
+        app:layout_constraintTop_toBottomOf="@+id/ct_titulo" />
 
     <EditText
-        android:id="@+id/editTextDate3"
+        android:id="@+id/ct_data"
         android:layout_width="334dp"
         android:layout_height="48dp"
         android:layout_marginStart="43dp"
@@ -92,10 +77,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate3" />
+        app:layout_constraintTop_toBottomOf="@+id/ct_data" />
 
     <EditText
-        android:id="@+id/editTextText8"
+        android:id="@+id/ct_descricao"
         android:layout_width="343dp"
         android:layout_height="125dp"
         android:layout_marginStart="43dp"
@@ -110,9 +95,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
+    
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="195dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="261dp"
+        android:text="@string/criar_tarefa_atribua_utilizadores"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_descricao" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/ct_membros"
         android:layout_width="339dp"
         android:layout_height="54dp"
         android:layout_marginStart="40dp"
@@ -123,6 +123,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
+    
+    <!-- TODO criar botao comfirmar com id ct_confirmar -->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_view"

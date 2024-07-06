@@ -35,10 +35,10 @@ class criar_projeto : AppCompatActivity() {
             insets
         }
 
-        cnome = findViewById(R.id.editTextText)
-        cdescricao = findViewById(R.id.editTextText2)
-        cmembros = findViewById(R.id.spinner1)
-        cconfirmar = findViewById(R.id.button)
+        cnome = findViewById(R.id.cp_nome)
+        cdescricao = findViewById(R.id.cp_descricao)
+        cmembros = findViewById(R.id.cp_membros)
+        cconfirmar = findViewById(R.id.cp_confirmar)
 
         cconfirmar.setOnClickListener {
             val cnome = cnome.text.toString()

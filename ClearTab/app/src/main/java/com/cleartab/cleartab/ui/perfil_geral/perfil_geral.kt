@@ -4,8 +4,6 @@ import android.content.Intent
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.coroutines.launch
-import androidx.lifecycle.lifecycleScope
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
@@ -33,11 +31,11 @@ class perfil_geral : AppCompatActivity(){
             insets
         }
 
-        gnome = findViewById(R.id.editTextText4)
-        gcargo = findViewById(R.id.editTextText5)
-        gemail = findViewById(R.id.editTextText6)
-        gbaixar = findViewById(R.id.button3)
-        geditar = findViewById(R.id.button5)
+        gnome = findViewById(R.id.pg_nome)
+        gcargo = findViewById(R.id.pg_cargo)
+        gemail = findViewById(R.id.pg_email)
+        gbaixar = findViewById(R.id.pg_baixaar)
+        geditar = findViewById(R.id.pg_editar)
 
         // Botão Baixar
         gbaixar.setOnClickListener {

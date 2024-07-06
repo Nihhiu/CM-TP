@@ -33,9 +33,9 @@ class perfil_pessoal: AppCompatActivity() {
             insets
         }
 
-        pnome = findViewById(R.id.editTextText4)
+        pnome = findViewById(R.id.pg_nome)
         pcargo = findViewById(R.id.editTextText5)
-        pemail = findViewById(R.id.editTextText6)
+        pemail = findViewById(R.id.ap_email)
         peditar = findViewById(R.id.button3)
         psair = findViewById(R.id.button5)
 
