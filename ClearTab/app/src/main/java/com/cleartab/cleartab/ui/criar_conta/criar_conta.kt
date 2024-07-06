@@ -30,11 +30,7 @@ class criar_conta : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.criar_conta)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.criar_conta)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
 
         cemail = findViewById(R.id.cc_email)
         cpassword = findViewById(R.id.cc_password)

@@ -6,7 +6,7 @@
     app:startDestination="@id/slider__intro">
     <fragment
         android:id="@+id/slider__intro"
-        android:name="com.cleartab.cleartab.ui.slider_intro.slider__intro"
+        android:name="com.cleartab.cleartab.ui.slider_intro.Slider__intro_fragment"
         android:label="@string/slider1"
         tools:layout="@layout/slider__intro" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/slider_intro_2"
-        android:name="com.cleartab.cleartab.ui.slider_intro.slider_intro_2"
+        android:name="com.cleartab.cleartab.ui.slider_intro.Slider_intro_2_fragment"
         android:label="@string/slider2"
         tools:layout="@layout/slider_intro_2" >
         <action

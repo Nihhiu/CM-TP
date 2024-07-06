@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.cleartab.cleartab.R
+import com.cleartab.cleartab.R.*
 import com.cleartab.cleartab.retrofit.SupabaseService
 import com.cleartab.cleartab.ui.atualizar_perfil.atualizar_perfil
 import com.cleartab.cleartab.utils.*
@@ -24,18 +22,13 @@ class perfil_geral : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.perfil_geral)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.perfil_geral)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        setContentView(layout.perfil_geral)
 
-        gnome = findViewById(R.id.pg_nome)
-        gcargo = findViewById(R.id.pg_cargo)
-        gemail = findViewById(R.id.pg_email)
-        gbaixar = findViewById(R.id.pg_baixaar)
-        geditar = findViewById(R.id.pg_editar)
+        gnome = findViewById(id.pg_nome)
+        gcargo = findViewById(id.pg_cargo)
+        gemail = findViewById(id.pg_email)
+        gbaixar = findViewById(id.pg_baixar)
+        geditar = findViewById(id.pg_editar)
 
         // Botão Baixar
         gbaixar.setOnClickListener {

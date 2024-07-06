@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/criar_projeto">
 
     <TextView
         android:id="@+id/textView3"
@@ -84,33 +85,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cp_descricao" />
 
-<<<<<<< Updated upstream
-    <Spinner
-        android:id="@+id/spinner1"
-=======
     <EditText
         android:id="@+id/cp_membros"
->>>>>>> Stashed changes
-        android:layout_width="339dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="18dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
+        android:layout_width="354dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/criar_projeto_nome"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/cp_confirmar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-    
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/cp_confirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/rounded_corners"
         android:text="@string/criar_projeto_confirmar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cp_membros" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

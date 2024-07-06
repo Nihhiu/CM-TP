@@ -8,10 +8,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.cleartab.cleartab.R
+import com.cleartab.cleartab.R.*
 import com.cleartab.cleartab.retrofit.SupabaseService
 import com.cleartab.cleartab.retrofit.tables.Projeto
 import com.cleartab.cleartab.ui.home.home
@@ -28,17 +26,12 @@ class criar_projeto : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.criar_projeto)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.criar_projeto)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        setContentView(layout.criar_projeto)
 
-        cnome = findViewById(R.id.cp_nome)
-        cdescricao = findViewById(R.id.cp_descricao)
-        cmembros = findViewById(R.id.cp_membros)
-        cconfirmar = findViewById(R.id.cp_confirmar)
+        cnome = findViewById(id.cp_nome)
+        cdescricao = findViewById(id.cp_descricao)
+        cmembros = findViewById(id.cp_membros)
+        cconfirmar = findViewById(id.cp_confirmar)
 
         cconfirmar.setOnClickListener {
             val cnome = cnome.text.toString()
