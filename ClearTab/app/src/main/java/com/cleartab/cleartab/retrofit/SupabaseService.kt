@@ -9,7 +9,6 @@ import com.cleartab.cleartab.retrofit.tables.UtilizadorTarefa
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.Email
 import io.github.jan.supabase.postgrest.postgrest
-import io.github.jan.supabase.postgrest.query.Columns
 import io.github.jan.supabase.postgrest.query.Order
 
 data class UserProfile(
@@ -261,9 +260,7 @@ class SupabaseService {
 
             val projectList = supabase.postgrest
                 .from("public","Projeto")
-                .select(
-                    columns = Columns.list("idProjeto", "nome")
-                ){
+                .select(){
                     filter {
                         isIn("idProjeto", projectsIDs)
                     }
@@ -353,9 +350,7 @@ class SupabaseService {
 
             val listUtilizador = supabase.postgrest
                 .from("public","Utilizador")
-                .select(
-                    columns = Columns.list("idUtilizador", "nome")
-                ) {
+                .select() {
                     filter {
                         isIn("idUtilizador", idUtilizadorList)
                     }
@@ -433,9 +428,7 @@ class SupabaseService {
         try {
             val response = supabase.postgrest
                 .from("public","Tarefa")
-                .select(
-                    columns = Columns.list("Tarefa", "titulo", "data")
-                ){
+                .select(){
                     order(
                         column = "data",
                         order = Order.ASCENDING
@@ -498,9 +491,7 @@ class SupabaseService {
 
             val listUtilizador = supabase.postgrest
                 .from("public","Utilizador")
-                .select(
-                    columns = Columns.list("idUtilizador", "nome")
-                ) {
+                .select() {
                     filter {
                         isIn("idUtilizador", idUtilizadorList)
                     }
@@ -588,9 +579,7 @@ class SupabaseService {
 
             val listUtilizador = supabase.postgrest
                 .from("public","Utilizador")
-                .select(
-                    columns = Columns.list("idUtilizador", "nome")
-                ) {
+                .select() {
                     filter {
                         isIn("idUtilizador", idUtilizadorList)
                     }

@@ -26,6 +26,13 @@
 
         <activity android:name=".ui.login.login" />
         <activity android:name=".ui.criar_conta.criar_conta" />
+        <activity android:name=".ui.perfil_pessoal.perfil_pessoal" />
+        <activity android:name=".ui.perfil_geral.perfil_geral" />
+
+        <activity android:name=".ui.projetos.projetos" />
+        <activity android:name=".ui.criar_projeto.criar_projeto" />
+
+        <activity android:name=".ui.criar_tarefas.criar_tarefas" />
 
         <activity android:name=".MainActivity" />
 

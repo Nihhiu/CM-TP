@@ -34,12 +34,12 @@ class projetos: AppCompatActivity() {
 
         // specify an viewAdapter (see also next example)
         fetchProjects { myDataset ->
-            if(myDataset.isEmpty()){
+            if(myDataset?.isEmpty() == true){
                 val intent = Intent(this, criar_projeto::class.java)
                 startActivity(intent)
                 finish()
             } else {
-                val adapter = projetosAdapter(myDataset)
+                val adapter = projetosAdapter(myDataset!!)
                 precycler.adapter = adapter
             }
         }
@@ -50,7 +50,7 @@ class projetos: AppCompatActivity() {
         }
     }
 
-    fun fetchProjects(callback: (List<Projeto>) -> Unit) {
+    fun fetchProjects(callback: (List<Projeto>?) -> Unit) {
         lifecycleScope.launch {
             val myDataset = db.fetchProjectsList(
                 idUtilizador = SharedPreferencesUtil.getIDs(
@@ -58,7 +58,7 @@ class projetos: AppCompatActivity() {
                     "ID_UTILIZADOR"
                 )
             )
-            callback(myDataset!!)
+            callback(myDataset)
         }
     }
 }
