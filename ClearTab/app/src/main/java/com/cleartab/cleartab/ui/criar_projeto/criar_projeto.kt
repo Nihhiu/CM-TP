@@ -9,10 +9,10 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.cleartab.cleartab.MainActivity
 import com.cleartab.cleartab.R.*
 import com.cleartab.cleartab.retrofit.SupabaseService
 import com.cleartab.cleartab.retrofit.tables.Projeto
-import com.cleartab.cleartab.ui.home.home
 import com.cleartab.cleartab.utils.SharedPreferencesUtil
 import kotlinx.coroutines.launch
 
@@ -47,7 +47,7 @@ class criar_projeto : AppCompatActivity() {
                         val done = db.addUtilizadorToProject(line, idProjeto!!)
                     }
                 }
-                val intent = Intent(this, home::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else {
                 showError("Por favor preencha todos os campos")
