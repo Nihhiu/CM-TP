@@ -48,4 +48,5 @@
     <string name="criar_conta_entre">Start!</string>
     <string name="criar_conta_descricao_text">Description</string>
     <string name="criar_conta_para_login">Already have an account?</string>
+    <string name="tasks_criar_tarefa">Create Task</string>
 </resources>

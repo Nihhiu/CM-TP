@@ -41,4 +41,14 @@
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="171dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/tasks_criar_tarefa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
 </androidx.constraintlayout.widget.ConstraintLayout>
