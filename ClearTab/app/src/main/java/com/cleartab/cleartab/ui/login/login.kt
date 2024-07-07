@@ -51,19 +51,20 @@ class login : AppCompatActivity(){
         llogin.setOnClickListener {
             val email = lemail.text.toString()
             val password = lpassword.text.toString()
+            intent = Intent(this, MainActivity::class.java)
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                     lifecycleScope.launch {
                         val idUtilizador = db.logIn(email, password)
                         if (idUtilizador != null){
                             SharedPreferencesUtil.saveIds(this@login, "ID_UTILIZADOR", idUtilizador)
+
+                            startActivity(intent)
+                            finish()
                         } else {
                             showError("Email ou senha incorretos")
                         }
                     }
-                intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
             } else {
                 showError("Por favor, preencha todos os campos")
                 Log.e("Login", "Campos de email ou senha vazios")

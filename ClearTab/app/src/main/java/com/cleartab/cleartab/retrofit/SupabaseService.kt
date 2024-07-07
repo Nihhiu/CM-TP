@@ -69,29 +69,15 @@ class SupabaseService {
 
         // Verificar se o usuário existe na DB
         val existsUserEmail = supabase.postgrest
-            .from("Utilizador")
-            .select(columns = Columns.list("idUtilizador","email")) {
-                filter {
-                    eq("email", emailLogin)
-                }
-            }
-
-        if (existsUserEmail.data.isEmpty()) {
-            println("User doesn't exist")
-            return null
-        }
-
-        // Obter o ID do usuário
-        val idUtilizador = supabase.postgrest
-            .from("Utilizador")
-            .select(columns = Columns.list("idUtilizador")) {
+            .from("public", "Utilizador")
+            .select() {
                 filter {
                     eq("email", emailLogin)
                 }
             }
             .decodeSingle<Utilizador>()
 
-        return idUtilizador.idUtilizador
+        return existsUserEmail.idUtilizador
     }
     suspend fun signOut(): Boolean {
         kotlin.runCatching {
@@ -106,7 +92,7 @@ class SupabaseService {
         try {
 //          Update Utilizador
             val utilizadorResponse = supabase.postgrest
-                .from("Utilizador")
+                .from("public","Utilizador")
                 .update(
                     {
                         set("nome", utilizador.nome)
@@ -127,7 +113,7 @@ class SupabaseService {
 
 //          Update TipoUtilizador
             val tipoUtilizadorResponse = supabase.postgrest
-                .from("TipoUtilizador")
+                .from("public","TipoUtilizador")
                 .update(
                     {
                         set("tipo", tipoUtilizador.tipo)
@@ -150,7 +136,7 @@ class SupabaseService {
 //      Delete from DB
         kotlin.runCatching {
             supabase.postgrest
-                .from("Utilizador")
+                .from("public","Utilizador")
                 .delete {
                     filter {
                         eq("idUtilizador", idUtilizador)
@@ -166,7 +152,7 @@ class SupabaseService {
         try {
 //          Obter dados do utilizador
             val utilizadorResponse = supabase.postgrest
-                .from("Utilizador")
+                .from("public","Utilizador")
                 .select() {
                     filter {
                         eq("idUtilizador", idUtilizador)
@@ -175,7 +161,7 @@ class SupabaseService {
                 .decodeSingle<Utilizador>()
 //          Obter tipo de utilizador
             val tiposUtilizadorResponse = supabase.postgrest
-                .from("TipoUtilizador")
+                .from("public","TipoUtilizador")
                 .select() {
                     filter {
                         eq("idUtilizador", idUtilizador)
@@ -199,7 +185,7 @@ class SupabaseService {
     suspend fun createProject(projeto: Projeto, idUtilizador: Long): Long? {
         try {
             val projetoCriado = supabase.postgrest
-                .from("Projeto")
+                .from("public","Projeto")
                 .insert(projeto)
                 .decodeSingle<Projeto>()
 
@@ -209,7 +195,7 @@ class SupabaseService {
             val tipoUtilizador = TipoUtilizador(idUtilizador, projetoCriado.idProjeto!!, "Admin")
 
             val response = supabase.postgrest
-                .from("TipoUtilizador")
+                .from("public","TipoUtilizador")
                 .insert(tipoUtilizador)
 
             println("Added Utilizador to Project successfully: ${response.data}")
@@ -223,7 +209,7 @@ class SupabaseService {
 //      Delete from DB projeto
         try {
             val response = supabase.postgrest
-                .from("Projeto")
+                .from("public","Projeto")
                 .delete(){
                     filter {
                         eq("idProjeto", idProjeto)
@@ -241,7 +227,7 @@ class SupabaseService {
         try {
 //          Update Projeto
             val utilizadorResponse = supabase.postgrest
-                .from("Projeto")
+                .from("public","Projeto")
                 .update(
                     {
                         set("nome", projeto.nome)
@@ -263,7 +249,7 @@ class SupabaseService {
     suspend fun fetchProjectsList(idUtilizador: Long): List<Projeto>? {
         try {
             val projectsUserIDs = supabase.postgrest
-                .from("TipoUtilizador")
+                .from("public","TipoUtilizador")
                 .select(){
                     filter {
                         eq("idUtilizador", idUtilizador)
@@ -274,7 +260,7 @@ class SupabaseService {
             val projectsIDs = projectsUserIDs.map { it.idProjeto }
 
             val projectList = supabase.postgrest
-                .from("Projeto")
+                .from("public","Projeto")
                 .select(
                     columns = Columns.list("idProjeto", "nome")
                 ){
@@ -293,7 +279,7 @@ class SupabaseService {
     suspend fun fetchProject(idProjeto: Long): Projeto? {
         try {
             val response = supabase.postgrest
-                .from("Projeto")
+                .from("public","Projeto")
                 .select(){
                     filter {
                         eq("idProjeto", idProjeto)
@@ -313,7 +299,7 @@ class SupabaseService {
     suspend fun addUtilizadorToProject(email: String, idProjeto: Long): Boolean {
         try {
             val idUtilizador = supabase.postgrest
-                .from("Utilizador")
+                .from("public","Utilizador")
                 .select() {
                     filter {
                         eq("email", email)
@@ -324,7 +310,7 @@ class SupabaseService {
             val tipoUtilizador = TipoUtilizador(idUtilizador = idUtilizador.idUtilizador!!, idProjeto = idProjeto, tipo = "Utilizador")
 
             val response = supabase.postgrest
-                .from("TipoUtilizador")
+                .from("public","TipoUtilizador")
                 .insert(tipoUtilizador)
 
             println("Added Utilizador to Project successfully: ${response.data}")
@@ -337,7 +323,7 @@ class SupabaseService {
     suspend fun removeUtilizadorFromProject(idUtilizador: Long, idProjeto: Long): Boolean {
         try {
             val response = supabase.postgrest
-                .from("TipoUtilizador")
+                .from("public","TipoUtilizador")
                 .delete(){
                     filter {
                         eq("idProjeto", idProjeto)
@@ -355,7 +341,7 @@ class SupabaseService {
     suspend fun fetchUtilizadorFromProject(idProjeto: Long): List<UserProfile>? {
         try {
             val listTipoUtilizador = supabase.postgrest
-                .from("TipoUtilizador")
+                .from("public","TipoUtilizador")
                 .select() {
                     filter {
                         eq("idProjeto", idProjeto)
@@ -366,7 +352,7 @@ class SupabaseService {
             val idUtilizadorList = listTipoUtilizador.map { it.idUtilizador }
 
             val listUtilizador = supabase.postgrest
-                .from("Utilizador")
+                .from("public","Utilizador")
                 .select(
                     columns = Columns.list("idUtilizador", "nome")
                 ) {
@@ -392,7 +378,7 @@ class SupabaseService {
     suspend fun createTask(tarefa: Tarefa): Boolean {
         try {
             val response = supabase.postgrest
-                .from("Tarefa")
+                .from("public","Tarefa")
                 .insert(tarefa)
 
             println("Created Tarefa successfully: ${response.data}")
@@ -405,7 +391,7 @@ class SupabaseService {
     suspend fun deleteTask(idTarefa: Long): Boolean {
         try {
             val response = supabase.postgrest
-                .from("Tarefa")
+                .from("public","Tarefa")
                 .delete(){
                     filter {
                         eq("idTarefa", idTarefa)
@@ -423,7 +409,7 @@ class SupabaseService {
         try {
 //          Update Tarefa
             val utilizadorResponse = supabase.postgrest
-                .from("Tarefa")
+                .from("public","Tarefa")
                 .update(
                     {
                         set("titulo", tarefa.titulo)
@@ -446,7 +432,7 @@ class SupabaseService {
     suspend fun fetchTasksList(): List<Tarefa>? {
         try {
             val response = supabase.postgrest
-                .from("Tarefa")
+                .from("public","Tarefa")
                 .select(
                     columns = Columns.list("Tarefa", "titulo", "data")
                 ){
@@ -466,7 +452,7 @@ class SupabaseService {
     suspend fun fetchTask(idTarefa: Long): Tarefa? {
         try {
             val response = supabase.postgrest
-                .from("Tarefa")
+                .from("public","Tarefa")
                 .select(){
                     filter {
                         eq("idTarefa", idTarefa)
@@ -486,7 +472,7 @@ class SupabaseService {
     suspend fun createRating(avaliacao: Avaliacao): Boolean {
         try {
             val response = supabase.postgrest
-                .from("Avaliacao")
+                .from("public","Avaliacao")
                 .insert(avaliacao)
 
             println("Created Avaliacao successfully: ${response.data}")
@@ -499,7 +485,7 @@ class SupabaseService {
     suspend fun fetchRatingsList(mes: Int, ano: Int): List<AvaliacaoProfile>? {
         try {
             val listAvaliacao = supabase.postgrest
-                .from("Avaliacao")
+                .from("public","Avaliacao")
                 .select(){
                     filter {
                         eq("mes", mes)
@@ -511,7 +497,7 @@ class SupabaseService {
             val idUtilizadorList = listAvaliacao.map { it.idUtilizador }
 
             val listUtilizador = supabase.postgrest
-                .from("Utilizador")
+                .from("public","Utilizador")
                 .select(
                     columns = Columns.list("idUtilizador", "nome")
                 ) {
@@ -535,7 +521,7 @@ class SupabaseService {
     suspend fun fetchRating(idUtilizador: Long, mes: Int, ano: Int): Avaliacao? {
         try {
             val response = supabase.postgrest
-                .from("Tarefa")
+                .from("public","Tarefa")
                 .select(){
                     filter {
                         eq("mes", mes)
@@ -559,7 +545,7 @@ class SupabaseService {
             val utilizadorTarefa = UtilizadorTarefa(idUtilizador = idUtilizador, idTarefa = idTarefa, avaliacaoDificuldade = null, avaliacaoEquipa = null, descricao = null, tempoInvestido = null)
 
             val response = supabase.postgrest
-                .from("UtilizadorTarefa")
+                .from("public","UtilizadorTarefa")
                 .insert(utilizadorTarefa)
 
             println("Added Utilizador to Tarefa successfully: ${response.data}")
@@ -572,7 +558,7 @@ class SupabaseService {
     suspend fun removeUtilizadorFromTask(idUtilizador: Long, idTarefa: Long): Boolean {
         try {
             val response = supabase.postgrest
-                .from("UtilizadorTarefa")
+                .from("public","UtilizadorTarefa")
                 .delete() {
                     filter {
                         eq("idUtilizador", idUtilizador)
@@ -590,7 +576,7 @@ class SupabaseService {
     suspend fun fetchUsersList(idTarefa: Long): List<Utilizador>? {
         try {
             val listUtilizadorNaTarefa = supabase.postgrest
-                .from("UtilizadorTarefa")
+                .from("public","UtilizadorTarefa")
                 .select(){
                     filter {
                         eq("idTarefa", idTarefa)
@@ -601,7 +587,7 @@ class SupabaseService {
             val idUtilizadorList = listUtilizadorNaTarefa.map { it.idUtilizador }
 
             val listUtilizador = supabase.postgrest
-                .from("Utilizador")
+                .from("public","Utilizador")
                 .select(
                     columns = Columns.list("idUtilizador", "nome")
                 ) {
@@ -620,7 +606,7 @@ class SupabaseService {
     suspend fun addAvaliacao(utilizadorTarefa: UtilizadorTarefa): Boolean {
         try {
             val response = supabase.postgrest
-                .from("UtilizadorTarefa")
+                .from("public","UtilizadorTarefa")
                 .update({
                         set("avaliacaoDificuldade", utilizadorTarefa.avaliacaoDificuldade)
                         set("avaliacaoEquipa", utilizadorTarefa.avaliacaoEquipa)

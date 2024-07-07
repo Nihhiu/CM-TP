@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Utilizador(
-    val idUtilizador: Long? = null, // Primary key auto-generated
+    val idUtilizador: Long? = null,
     val nome: String,
     val password: String,
     val email: String,

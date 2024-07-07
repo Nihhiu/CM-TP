@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("plugin.serialization") version  "1.8.10"
+    kotlin("plugin.serialization") version  "1.8.22"
 }
 
 android {
@@ -64,4 +64,5 @@ dependencies {
     implementation("io.github.jan-tennert.supabase:gotrue-kt")
     implementation("io.github.jan-tennert.supabase:realtime-kt")
     implementation("io.ktor:ktor-client-android:2.3.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 }
