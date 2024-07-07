@@ -10,23 +10,27 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
         android:text="@string/login"
         android:textColor="#000000"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/cc_nome"
         android:layout_width="361dp"
         android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="@string/criar_conta_nome"
         android:inputType="text"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="273dp"
-        tools:layout_editor_absoluteY="239dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
@@ -35,16 +39,20 @@
         android:text="@string/login_password"
         android:textColor="#000000"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="192dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cc_password"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/cc_password" />
 
     <Button
         android:id="@+id/cc_criar_conta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@drawable/rounded_corners"
         android:text="@string/criar_conta_conta"
-        tools:layout_editor_absoluteY="287dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button8"
+        tools:layout_editor_absoluteX="297dp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -53,28 +61,31 @@
         android:text="@string/criar_conta_email"
         android:textColor="#000000"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="360dp"
-        tools:layout_editor_absoluteY="304dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cc_email"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/cc_email" />
 
     <EditText
         android:id="@+id/cc_password"
         android:layout_width="350dp"
         android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/login_password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="358dp"
-        tools:layout_editor_absoluteY="223dp" />
+        app:layout_constraintStart_toStartOf="@+id/cc_email"
+        app:layout_constraintTop_toBottomOf="@+id/cc_email" />
 
     <EditText
         android:id="@+id/cc_email"
         android:layout_width="357dp"
         android:layout_height="54dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/criar_conta_email"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="118dp" />
+        app:layout_constraintStart_toStartOf="@+id/cc_nome"
+        app:layout_constraintTop_toBottomOf="@+id/cc_nome" />
 
     <TextView
         android:id="@+id/textView3"
@@ -83,8 +94,9 @@
         android:text="@string/criar_conta_nome"
         android:textColor="#000000"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="355dp"
-        tools:layout_editor_absoluteY="195dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cc_nome"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/cc_nome" />
 
     <Button
         android:id="@+id/button8"
@@ -93,7 +105,9 @@
         android:backgroundTint="#FFFFFF"
         android:text="@string/criar_conta_para_login"
         android:textColor="@color/main_light_green"
-        tools:layout_editor_absoluteX="418dp"
-        tools:layout_editor_absoluteY="363dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cc_password"
+        app:layout_constraintVertical_bias="0.321"
+        tools:layout_editor_absoluteX="288dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
