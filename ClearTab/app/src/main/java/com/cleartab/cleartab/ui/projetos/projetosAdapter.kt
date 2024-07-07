@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cleartab.cleartab.R
 import com.cleartab.cleartab.retrofit.tables.Projeto
 
-class projetosAdapter (private val myDataset: List<Projeto>) :
+class projetosAdapter (private val myDataset: List<Projeto>, private val onItemClick: (Projeto) -> Unit) :
     RecyclerView.Adapter<projetosAdapter.MyViewHolder>() {
 
     class MyViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
@@ -21,10 +21,12 @@ class projetosAdapter (private val myDataset: List<Projeto>) :
         return MyViewHolder(textView)
     }
 
+
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        holder.textView.text = myDataset[position].nome
+        val projeto = myDataset[position]
+        holder.textView.text = projeto.nome
+        holder.textView.setOnClickListener { onItemClick(projeto) }
     }
 
     override fun getItemCount() = myDataset.size
