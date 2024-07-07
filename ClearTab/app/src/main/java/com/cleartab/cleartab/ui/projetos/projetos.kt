@@ -3,7 +3,6 @@ package com.cleartab.cleartab.ui.projetos
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -40,9 +39,7 @@ class projetos: AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                val adapter = projetosAdapter(myDataset!!) {projeto ->
-                    Toast.makeText(this, "Clicked: ${projeto.idProjeto}", Toast.LENGTH_SHORT).show()
-                }
+                val adapter = projetosAdapter(myDataset!!)
                 precycler.adapter = adapter
             }
         }
