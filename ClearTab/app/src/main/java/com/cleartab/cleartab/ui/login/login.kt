@@ -1,22 +1,23 @@
 package com.cleartab.cleartab.ui.login
 
 import android.content.Intent
-import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import kotlinx.coroutines.launch
-import androidx.lifecycle.lifecycleScope
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.cleartab.cleartab.MainActivity
 import com.cleartab.cleartab.R
 import com.cleartab.cleartab.retrofit.SupabaseService
 import com.cleartab.cleartab.ui.criar_conta.criar_conta
-import com.cleartab.cleartab.utils.*
+import com.cleartab.cleartab.utils.SharedPreferencesUtil
+import kotlinx.coroutines.launch
 
 class login : AppCompatActivity(){
     private lateinit var lemail : EditText
@@ -60,6 +61,9 @@ class login : AppCompatActivity(){
                             showError("Email ou senha incorretos")
                         }
                     }
+                intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             } else {
                 showError("Por favor, preencha todos os campos")
                 Log.e("Login", "Campos de email ou senha vazios")

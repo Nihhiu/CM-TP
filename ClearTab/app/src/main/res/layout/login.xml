@@ -43,7 +43,6 @@
         android:ems="10"
         android:hint="@string/criar_conta_email"
         android:inputType="text"
-        android:text="@string/criar_conta_email"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

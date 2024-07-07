@@ -1,10 +1,14 @@
 package com.cleartab.cleartab.retrofit
 
-import com.cleartab.cleartab.retrofit.tables.*
-
+import com.cleartab.cleartab.retrofit.tables.Avaliacao
+import com.cleartab.cleartab.retrofit.tables.Projeto
+import com.cleartab.cleartab.retrofit.tables.Tarefa
+import com.cleartab.cleartab.retrofit.tables.TipoUtilizador
+import com.cleartab.cleartab.retrofit.tables.Utilizador
+import com.cleartab.cleartab.retrofit.tables.UtilizadorTarefa
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.Email
-import io.github.jan.supabase.postgrest.from
+import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns
 import io.github.jan.supabase.postgrest.query.Order
 
@@ -38,7 +42,7 @@ class SupabaseService {
 
 //      Criar conta na Base de Dados
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Utilizador")
                 .insert(utilizador)
 
@@ -50,11 +54,23 @@ class SupabaseService {
         return false
     }
     suspend fun logIn(emailLogin: String, passwordLogin: String): Long? {
+        // Tentar fazer login
+        val loginResult = kotlin.runCatching {
+            supabase.auth.signInWith(Email) {
+                email = emailLogin
+                password = passwordLogin
+            }
+        }
 
-//      Verificar se existe na DB
-        val existsUserEmail = supabase
+        loginResult.onFailure {
+            println("There was an error while logging in: ${it.message}")
+            return null
+        }
+
+        // Verificar se o usuário existe na DB
+        val existsUserEmail = supabase.postgrest
             .from("Utilizador")
-            .select(columns = Columns.list("email")) {
+            .select(columns = Columns.list("idUtilizador","email")) {
                 filter {
                     eq("email", emailLogin)
                 }
@@ -64,24 +80,17 @@ class SupabaseService {
             println("User doesn't exist")
             return null
         }
-        val idUtilizador = supabase
+
+        // Obter o ID do usuário
+        val idUtilizador = supabase.postgrest
             .from("Utilizador")
             .select(columns = Columns.list("idUtilizador")) {
                 filter {
                     eq("email", emailLogin)
-                    }
+                }
             }
             .decodeSingle<Utilizador>()
-        //      Login no Auth
-        kotlin.runCatching {
-            supabase.auth.signInWith(Email) {
-                email = emailLogin
-                password = passwordLogin
-            }
-        }.onFailure {
-            println("There was an error while loging in: ${it.message}")
-            return null
-        }
+
         return idUtilizador.idUtilizador
     }
     suspend fun signOut(): Boolean {
@@ -96,7 +105,7 @@ class SupabaseService {
     suspend fun editProfile(utilizador: Utilizador, tipoUtilizador: TipoUtilizador): Boolean {
         try {
 //          Update Utilizador
-            val utilizadorResponse = supabase
+            val utilizadorResponse = supabase.postgrest
                 .from("Utilizador")
                 .update(
                     {
@@ -117,7 +126,7 @@ class SupabaseService {
             }
 
 //          Update TipoUtilizador
-            val tipoUtilizadorResponse = supabase
+            val tipoUtilizadorResponse = supabase.postgrest
                 .from("TipoUtilizador")
                 .update(
                     {
@@ -140,7 +149,7 @@ class SupabaseService {
     suspend fun deleteProfile(idUtilizador: Long): Boolean {
 //      Delete from DB
         kotlin.runCatching {
-            supabase
+            supabase.postgrest
                 .from("Utilizador")
                 .delete {
                     filter {
@@ -156,7 +165,7 @@ class SupabaseService {
     suspend fun fetchProfile(idUtilizador: Long, idProjeto: Long): UserProfile? {
         try {
 //          Obter dados do utilizador
-            val utilizadorResponse = supabase
+            val utilizadorResponse = supabase.postgrest
                 .from("Utilizador")
                 .select() {
                     filter {
@@ -165,7 +174,7 @@ class SupabaseService {
                 }
                 .decodeSingle<Utilizador>()
 //          Obter tipo de utilizador
-            val tiposUtilizadorResponse = supabase
+            val tiposUtilizadorResponse = supabase.postgrest
                 .from("TipoUtilizador")
                 .select() {
                     filter {
@@ -189,7 +198,7 @@ class SupabaseService {
 //  Projetos
     suspend fun createProject(projeto: Projeto, idUtilizador: Long): Long? {
         try {
-            val projetoCriado = supabase
+            val projetoCriado = supabase.postgrest
                 .from("Projeto")
                 .insert(projeto)
                 .decodeSingle<Projeto>()
@@ -199,7 +208,7 @@ class SupabaseService {
 //          Adicionar tipo de utilizador
             val tipoUtilizador = TipoUtilizador(idUtilizador, projetoCriado.idProjeto!!, "Admin")
 
-            val response = supabase
+            val response = supabase.postgrest
                 .from("TipoUtilizador")
                 .insert(tipoUtilizador)
 
@@ -213,7 +222,7 @@ class SupabaseService {
     suspend fun deleteProject(idProjeto: Long): Boolean {
 //      Delete from DB projeto
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Projeto")
                 .delete(){
                     filter {
@@ -231,7 +240,7 @@ class SupabaseService {
     suspend fun editProject(projeto: Projeto): Boolean {
         try {
 //          Update Projeto
-            val utilizadorResponse = supabase
+            val utilizadorResponse = supabase.postgrest
                 .from("Projeto")
                 .update(
                     {
@@ -253,7 +262,7 @@ class SupabaseService {
     }
     suspend fun fetchProjectsList(idUtilizador: Long): List<Projeto>? {
         try {
-            val projectsUserIDs = supabase
+            val projectsUserIDs = supabase.postgrest
                 .from("TipoUtilizador")
                 .select(){
                     filter {
@@ -264,7 +273,7 @@ class SupabaseService {
 
             val projectsIDs = projectsUserIDs.map { it.idProjeto }
 
-            val projectList = supabase
+            val projectList = supabase.postgrest
                 .from("Projeto")
                 .select(
                     columns = Columns.list("idProjeto", "nome")
@@ -283,7 +292,7 @@ class SupabaseService {
     }
     suspend fun fetchProject(idProjeto: Long): Projeto? {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Projeto")
                 .select(){
                     filter {
@@ -303,7 +312,7 @@ class SupabaseService {
 //  Vincular TipoUtilizador ao Projeto
     suspend fun addUtilizadorToProject(email: String, idProjeto: Long): Boolean {
         try {
-            val idUtilizador = supabase
+            val idUtilizador = supabase.postgrest
                 .from("Utilizador")
                 .select() {
                     filter {
@@ -314,7 +323,7 @@ class SupabaseService {
 
             val tipoUtilizador = TipoUtilizador(idUtilizador = idUtilizador.idUtilizador!!, idProjeto = idProjeto, tipo = "Utilizador")
 
-            val response = supabase
+            val response = supabase.postgrest
                 .from("TipoUtilizador")
                 .insert(tipoUtilizador)
 
@@ -327,7 +336,7 @@ class SupabaseService {
     }
     suspend fun removeUtilizadorFromProject(idUtilizador: Long, idProjeto: Long): Boolean {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("TipoUtilizador")
                 .delete(){
                     filter {
@@ -345,7 +354,7 @@ class SupabaseService {
     }
     suspend fun fetchUtilizadorFromProject(idProjeto: Long): List<UserProfile>? {
         try {
-            val listTipoUtilizador = supabase
+            val listTipoUtilizador = supabase.postgrest
                 .from("TipoUtilizador")
                 .select() {
                     filter {
@@ -356,7 +365,7 @@ class SupabaseService {
 
             val idUtilizadorList = listTipoUtilizador.map { it.idUtilizador }
 
-            val listUtilizador = supabase
+            val listUtilizador = supabase.postgrest
                 .from("Utilizador")
                 .select(
                     columns = Columns.list("idUtilizador", "nome")
@@ -382,7 +391,7 @@ class SupabaseService {
 //  Tarefa
     suspend fun createTask(tarefa: Tarefa): Boolean {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Tarefa")
                 .insert(tarefa)
 
@@ -395,7 +404,7 @@ class SupabaseService {
     }
     suspend fun deleteTask(idTarefa: Long): Boolean {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Tarefa")
                 .delete(){
                     filter {
@@ -413,7 +422,7 @@ class SupabaseService {
     suspend fun editTask(tarefa: Tarefa): Boolean {
         try {
 //          Update Tarefa
-            val utilizadorResponse = supabase
+            val utilizadorResponse = supabase.postgrest
                 .from("Tarefa")
                 .update(
                     {
@@ -436,7 +445,7 @@ class SupabaseService {
     }
     suspend fun fetchTasksList(): List<Tarefa>? {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Tarefa")
                 .select(
                     columns = Columns.list("Tarefa", "titulo", "data")
@@ -456,7 +465,7 @@ class SupabaseService {
     }
     suspend fun fetchTask(idTarefa: Long): Tarefa? {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Tarefa")
                 .select(){
                     filter {
@@ -476,7 +485,7 @@ class SupabaseService {
 //  Auto-Avaliação Mensal
     suspend fun createRating(avaliacao: Avaliacao): Boolean {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Avaliacao")
                 .insert(avaliacao)
 
@@ -489,7 +498,7 @@ class SupabaseService {
     }
     suspend fun fetchRatingsList(mes: Int, ano: Int): List<AvaliacaoProfile>? {
         try {
-            val listAvaliacao = supabase
+            val listAvaliacao = supabase.postgrest
                 .from("Avaliacao")
                 .select(){
                     filter {
@@ -501,7 +510,7 @@ class SupabaseService {
 
             val idUtilizadorList = listAvaliacao.map { it.idUtilizador }
 
-            val listUtilizador = supabase
+            val listUtilizador = supabase.postgrest
                 .from("Utilizador")
                 .select(
                     columns = Columns.list("idUtilizador", "nome")
@@ -525,7 +534,7 @@ class SupabaseService {
     }
     suspend fun fetchRating(idUtilizador: Long, mes: Int, ano: Int): Avaliacao? {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("Tarefa")
                 .select(){
                     filter {
@@ -549,7 +558,7 @@ class SupabaseService {
         try {
             val utilizadorTarefa = UtilizadorTarefa(idUtilizador = idUtilizador, idTarefa = idTarefa, avaliacaoDificuldade = null, avaliacaoEquipa = null, descricao = null, tempoInvestido = null)
 
-            val response = supabase
+            val response = supabase.postgrest
                 .from("UtilizadorTarefa")
                 .insert(utilizadorTarefa)
 
@@ -562,7 +571,7 @@ class SupabaseService {
     }
     suspend fun removeUtilizadorFromTask(idUtilizador: Long, idTarefa: Long): Boolean {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("UtilizadorTarefa")
                 .delete() {
                     filter {
@@ -580,7 +589,7 @@ class SupabaseService {
     }
     suspend fun fetchUsersList(idTarefa: Long): List<Utilizador>? {
         try {
-            val listUtilizadorNaTarefa = supabase
+            val listUtilizadorNaTarefa = supabase.postgrest
                 .from("UtilizadorTarefa")
                 .select(){
                     filter {
@@ -591,7 +600,7 @@ class SupabaseService {
 
             val idUtilizadorList = listUtilizadorNaTarefa.map { it.idUtilizador }
 
-            val listUtilizador = supabase
+            val listUtilizador = supabase.postgrest
                 .from("Utilizador")
                 .select(
                     columns = Columns.list("idUtilizador", "nome")
@@ -610,7 +619,7 @@ class SupabaseService {
     }
     suspend fun addAvaliacao(utilizadorTarefa: UtilizadorTarefa): Boolean {
         try {
-            val response = supabase
+            val response = supabase.postgrest
                 .from("UtilizadorTarefa")
                 .update({
                         set("avaliacaoDificuldade", utilizadorTarefa.avaliacaoDificuldade)
