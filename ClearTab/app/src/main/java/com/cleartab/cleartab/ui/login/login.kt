@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.cleartab.cleartab.MainActivity
 import com.cleartab.cleartab.R
 import com.cleartab.cleartab.retrofit.SupabaseService
 import com.cleartab.cleartab.ui.criar_conta.criar_conta
@@ -51,13 +52,15 @@ class login : AppCompatActivity(){
         llogin.setOnClickListener {
             val email = lemail.text.toString()
             val password = lpassword.text.toString()
-            intent = Intent(this, projetos::class.java)
+            intent = Intent(this, MainActivity::class.java)
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                     lifecycleScope.launch {
                         val idUtilizador = db.logIn(email, password)
                         if (idUtilizador != null){
                             SharedPreferencesUtil.saveIds(this@login, "ID_UTILIZADOR", idUtilizador)
+                            val projeto = db.fetchProject(idProjeto = 1)
+                            SharedPreferencesUtil.saveIds(this@login, "ID_PROJETO", projeto?.idProjeto!!)
 
                             startActivity(intent)
                             finish()
