@@ -47,5 +47,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="criar_conta_entre">Entre!</string>
     <string name="criar_conta_descricao_text">Descrição</string>
+    <string name="criar_conta_para_login">Já tem conta?</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

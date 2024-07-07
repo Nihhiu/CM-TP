@@ -47,4 +47,5 @@
     <string name="login_cria_uma">Create one!</string>
     <string name="criar_conta_entre">Start!</string>
     <string name="criar_conta_descricao_text">Description</string>
+    <string name="criar_conta_para_login">Already have an account?</string>
 </resources>
